@@ -1,2 +1,2 @@
 # 42_so_long
-# 👷🚧En desarrollo🧑‍💻
+# 🚧En desarrollo👷
