@@ -1,62 +1,55 @@
 [![Build](https://github.com/42Paris/minilibx-linux/actions/workflows/ci.yml/badge.svg)](https://github.com/42Paris/minilibx-linux/actions/workflows/ci.yml)
 
-Esto es MinilibX, una sencilla API de programación X-Window (X11R6) en C, diseñada para estudiantes, adecuada para principiantes en X.
+This is the MinilibX, a simple X-Window (X11R6) programming API
+in C, designed for students, suitable for X-beginners.
 
 
+Contents
 
-Contenido
+ - source code in C to create the mlx library
+ - man pages (in man/ directory)
+ - a test program (in test/ directory) is built
+   with the library
+ - a public include file mlx.h
+ - a tiny configure script to generate an appropriate Makefile.gen
 
-- código fuente en C para crear la biblioteca mlx
-- páginas de manual (en el directorio man/)
-- un programa de prueba (en el directorio test/) se construye con la biblioteca
-- un archivo de inclusión público mlx.h
-- un pequeño script de configuración para generar un Makefile.gen apropiado
+Requirements for Linux
 
-
-
-Requisitos para Linux
-
-- MinilibX solo soporta el tipo de visual TrueColor (profundidad de 8,15,16,24 o 32 bits)
-- gcc
-- make
-- archivos de inclusión de X11 (paquete xorg)
-- La extensión XShm debe estar presente (paquete libxext-dev)
-- Funciones de utilidad de los sistemas BSD - archivos de desarrollo (paquete libbsd-dev)
-- por ejemplo, sudo apt-get install gcc make xorg libxext-dev libbsd-dev (Debian/Ubuntu)
-
-
-
-Requisitos para MacOS
-
-- Xquartz(https://www.xquartz.org/)
+ - MinilibX only support TrueColor visual type (8,15,16,24 or 32 bits depth)
+ - gcc
+ - make
+ - X11 include files (package xorg)
+ - XShm extension must be present (package libxext-dev)
+ - Utility functions from BSD systems - development files (package libbsd-dev)
+ - **e.g. _sudo apt-get install gcc make xorg libxext-dev libbsd-dev_ (Debian/Ubuntu)**
+ 
+Requirements for MacOS
+ - [Xquartz](https://www.xquartz.org/)
 
 ```bash
 ➜  ~ Brew install Xquartz
 ➜  ~ reboot
-➜  ~ xeyes # ejecuta una aplicación X11 de hola mundo
+➜  ~ xeyes # run an hello world X11 app
 ```
 
+MlX Color Opacity / Transparency / Alpha (32 bits depth)
+ - 0xFF (fully transparent) or 0x00 (fully opaque)
+
+Compile MinilibX
+
+ - run ./configure or make
+   both will make a few tests, create Makefile.gen
+   and then automatically run make on this generated Makefile.gen .
+   libmlx.a and libmlx_$(HOSTTYPE).a are created.
+   test/mlx-test binary is also created.
 
 
-Opacidad / Transparencia / Alfa de color MlX (profundidad de 32 bits)
+Install MinilibX
 
-- 0xFF (totalmente transparente) o 0x00 (totalmente opaco)
-
-
-
-Compilar MinilibX
-
-- ejecutar ./configure o make ambos harán algunas pruebas, crearán Makefile.gen y luego automáticamente ejecutarán make en este Makefile.gen generado. Se crean libmlx.a y libmlx_$(HOSTTYPE).a. También se crea el binario test/mlx-test.
+ - no installation script is provided. You may want to install
+     - libmlx.a and/or libmlx_$(HOSTTYPE).a in /usr/X11/lib or /usr/local/lib
+     - mlx.h in /usr/X11/include or /usr/local/include
+     - man/man3/mlx*.1 in /usr/X11/man/man3 or /usr/local/man/man3
 
 
-
-Instalar MinilibX
-
-- no se proporciona un script de instalación. Es posible que desees instalar
-- libmlx.a y/o libmlx_$(HOSTTYPE).a en /usr/X11/lib o /usr/local/lib
-- mlx.h en /usr/X11/include o /usr/local/include
-- man/man3/mlx*.1 en /usr/X11/man/man3 o /usr/local/man/man3
-
-
-
-Olivier CROUZET - 2014-01-06 -
+ Olivier CROUZET - 2014-01-06 -
