@@ -6,13 +6,15 @@
 #    By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/19 16:55:30 by ide-dieg          #+#    #+#              #
-#    Updated: 2024/09/20 16:28:43 by ide-dieg         ###   ########.fr        #
+#    Updated: 2024/09/21 19:37:45 by ide-dieg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
-SRC = 	src/main.c
+SRC = 	src/main.c \
+		42_get_next_line/get_next_line.c \
+		42_get_next_line/get_next_line_utils.c \
 
 CC = gcc
 
