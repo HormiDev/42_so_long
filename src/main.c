@@ -6,14 +6,44 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 14:49:33 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/09/21 20:42:17 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/09/24 10:50:39 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int main()
+int main(int argc, char **argv)
 {
+	int fd;
+	t_game *game;
+
+	if (argc != 2)
+	{
+		ft_putstr_fd("Error\nUsage: ./so_long [map.ber]\n", 2);
+		return (1);
+	}
+	ft_printf("Opening file %s\n", argv[1]);
+	fd = open(argv[1], O_RDONLY);
+	ft_printf("File descriptor: %d\n", fd);
+	if (fd < 0)
+	{
+		ft_putstr_fd("Error\nCould not open file\n", 2);
+		return (1);
+	}
+	game = ft_init_game(fd);
+	
+	if (!game)
+	{
+		ft_putstr_fd("Error\nCould not read map\n", 2);
+		close(fd);
+		return (1);
+	}
+	close(fd);
+	ft_printf("Map read successfully\n");
+	ft_file_print(game->map);
+	ft_file_clear(&game->map);
+	return (0);
+	/*
 	void *mlx;
 	void *win;
 	void *img;
@@ -28,6 +58,7 @@ int main()
 	if (!img)
 	{
 		mlx_destroy_window(mlx, win);
+		mlx_destroy_display(mlx);
 		return (0);
 	}
 
@@ -54,4 +85,5 @@ int main()
 
 	// Inicia el bucle de eventos principal
 	mlx_loop(mlx);
+	*/
 }
