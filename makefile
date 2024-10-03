@@ -6,20 +6,22 @@
 #    By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/19 16:55:30 by ide-dieg          #+#    #+#              #
-#    Updated: 2024/09/25 02:20:19 by ide-dieg         ###   ########.fr        #
+#    Updated: 2024/10/03 02:52:14 by ide-dieg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
 SRC = 	src/main.c \
+		src/ft_error_so_long.c \
 		src/fts_t_game.c \
 		src/fts_checkmap.c \
 		src/fts_checkmap2.c \
+		src/fts_t_map_fragment.c \
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g3
 
 LFLAGS = -lXext -lX11 -lm
 
