@@ -6,13 +6,13 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 00:24:47 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/10/08 02:11:54 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/10/09 20:52:20 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-t_map_fragment	*ft_map_fragment_new()
+t_map_fragment	*ft_map_fragment_new(void)
 {
 	t_map_fragment	*map_fragment;
 
@@ -35,68 +35,50 @@ t_map_fragment	*ft_map_fragment_new()
 	return (map_fragment);
 }
 
-void	ft_map_fragment_clear(t_map_fragment *map_fragment)
+t_map_fragment	*ft_map_fragment_top_left_corner(t_map_fragment *map_fragment)
+{
+	if (!map_fragment)
+		return (0);
+	while (map_fragment->left)
+		map_fragment = map_fragment->left;
+	while (map_fragment->up)
+		map_fragment = map_fragment->up;
+	return (map_fragment);
+}
+
+void	ft_map_fragment_clear_column(t_map_fragment *map_fragment)
 {
 	if (!map_fragment)
 		return ;
-	ft_printf("clear fragment map %c\n", map_fragment->map[0][0]);
-	if (map_fragment->right != 0)
-		map_fragment->right->left = 0;
-	if (map_fragment->left != 0)
-		map_fragment->left->right = 0;
-	if (map_fragment->up != 0)
-		map_fragment->up->down = 0;
-	if (map_fragment->down != 0)
-		map_fragment->down->up = 0;
-	if (map_fragment->right != 0)
-		{ft_printf("ragment map %c ", map_fragment->map[0][0]); ft_printf("clear rigth\n"); ft_map_fragment_clear(map_fragment->right);}
-	if (map_fragment->left != 0)
-		{ft_printf("ragment map %c ", map_fragment->map[0][0]); ft_printf("clear left\n"); ft_map_fragment_clear(map_fragment->left);}
-	if (map_fragment->up != 0)
-		{ft_printf("ragment map %c ", map_fragment->map[0][0]); ft_printf("clear up\n"); ft_map_fragment_clear(map_fragment->up);}
-	if (map_fragment->down != 0)
-		{ft_printf("ragment map %c ", map_fragment->map[0][0]); ft_printf("clear down\n"); ft_map_fragment_clear(map_fragment->down);}
+	if (map_fragment->down)
+		ft_map_fragment_clear_column(map_fragment->down);
 	if (map_fragment->map)
 		ft_free_str_rectangular_array(map_fragment->map, map_fragment->y);
 	free(map_fragment);
 }
 
-/*void	ft_map_fragment_clear(t_map_fragment *map_fragment)
+void	ft_map_fragment_clear_top_row(t_map_fragment *map_fragment)
 {
-	t_map_fragment	*tmp_left;
-	t_map_fragment	*tmp_right;
-	t_map_fragment	*tmp_up;
-	t_map_fragment	*tmp_down;
-
 	if (!map_fragment)
 		return ;
-	ft_printf("clear fragment map\n");
-	tmp_left = map_fragment->left;
-	if (tmp_left)
-		tmp_left->right = 0;
-	tmp_right = map_fragment->right;
-	if (tmp_right)
-		tmp_right->left = 0;
-	tmp_up = map_fragment->up;
-	if (tmp_up)
-		tmp_up->down = 0;
-	tmp_down = map_fragment->down;
-	if (tmp_down)
-		tmp_down->up = 0;
+	if (map_fragment->down)
+		ft_map_fragment_clear_column(map_fragment->down);
+	if (map_fragment->right)
+		ft_map_fragment_clear_top_row(map_fragment->right);
 	if (map_fragment->map)
 		ft_free_str_rectangular_array(map_fragment->map, map_fragment->y);
 	free(map_fragment);
-	if (tmp_left)
-		{ft_printf("clear fragment map left\n"); ft_map_fragment_clear(tmp_left);}
-	if (tmp_right)
-		{ft_printf("clear fragment map right\n"); ft_map_fragment_clear(tmp_right);}
-	if (tmp_up)
-		{ft_printf("clear fragment map up\n"); ft_map_fragment_clear(tmp_up);}
-	if (tmp_down)
-		{ft_printf("clear fragment map down\n"); ft_map_fragment_clear(tmp_down);}
-}*/
+}
 
-t_map_fragment *ft_map_fragment_add_right(t_map_fragment *map_fragment)
+void	ft_map_fragment_clear(t_map_fragment *map_fragment)
+{
+	if (!map_fragment)
+		return ;
+	map_fragment = ft_map_fragment_top_left_corner(map_fragment);
+	ft_map_fragment_clear_top_row(map_fragment);
+}
+
+t_map_fragment	*ft_map_fragment_add_right(t_map_fragment *map_fragment)
 {
 	t_map_fragment	*new_map_fragment;
 
@@ -120,7 +102,7 @@ t_map_fragment *ft_map_fragment_add_right(t_map_fragment *map_fragment)
 	return (new_map_fragment);
 }
 
-t_map_fragment *ft_map_fragment_add_left(t_map_fragment *map_fragment)
+t_map_fragment	*ft_map_fragment_add_left(t_map_fragment *map_fragment)
 {
 	t_map_fragment	*new_map_fragment;
 
@@ -144,7 +126,7 @@ t_map_fragment *ft_map_fragment_add_left(t_map_fragment *map_fragment)
 	return (new_map_fragment);
 }
 
-t_map_fragment *ft_map_fragment_add_up(t_map_fragment *map_fragment)
+t_map_fragment	*ft_map_fragment_add_up(t_map_fragment *map_fragment)
 {
 	t_map_fragment	*new_map_fragment;
 
@@ -168,7 +150,7 @@ t_map_fragment *ft_map_fragment_add_up(t_map_fragment *map_fragment)
 	return (new_map_fragment);
 }
 
-t_map_fragment *ft_map_fragment_add_down(t_map_fragment *map_fragment)
+t_map_fragment	*ft_map_fragment_add_down(t_map_fragment *map_fragment)
 {
 	t_map_fragment	*new_map_fragment;
 
@@ -194,10 +176,10 @@ t_map_fragment *ft_map_fragment_add_down(t_map_fragment *map_fragment)
 
 void	ft_map_fragment_necesary(t_game *game, int *x, int *y)
 {
-	int x_aux;
-	int y_aux;
-	int x_tiles;
-	int y_tiles;
+	int	x_aux;
+	int	y_aux;
+	int	x_tiles;
+	int	y_tiles;
 
 	*x = 1;
 	*y = 1;
@@ -223,7 +205,6 @@ void	ft_map_fragment_extend(t_game *game, int x, int y)
 	t_map_fragment	*tmp_x;
 	int				x_aux;
 
-	ft_printf("%d %d\n", x, y);
 	tmp_y = game->map_fragment;
 	while (y > 0)
 	{
@@ -231,7 +212,6 @@ void	ft_map_fragment_extend(t_game *game, int x, int y)
 		tmp_x = tmp_y;
 		while (x_aux > 1)
 		{
-			ft_printf("Adding right\n");
 			tmp_x = ft_map_fragment_add_right(tmp_x);
 			if (!tmp_x)
 				ft_error_so_long(game, 1);
@@ -239,7 +219,6 @@ void	ft_map_fragment_extend(t_game *game, int x, int y)
 		}
 		if (y > 1)
 		{
-			ft_printf("Adding down\n");
 			tmp_y = ft_map_fragment_add_down(tmp_y);
 			if (!tmp_y)
 				ft_error_so_long(game, 1);
@@ -248,54 +227,52 @@ void	ft_map_fragment_extend(t_game *game, int x, int y)
 	}
 }
 
-void	ft_copy_map_to_fragment_line(t_game *game, t_map_fragment *tmp_y,
-			int cont_map_line, int cont_fragment_line)
+void	ft_copy_map_to_fragment_line(t_game *game, t_map_fragment *tmp_x,
+			int cont_map_line, int cont_fragment_line, int x)
 {
-	t_map_fragment	*tmp_x;
 	int				cont_map_column;
 	int				n_columns;
+	int				cont_fragment_column;
+
 
 	n_columns = game->map->list_content->len - 1;
-	tmp_x = tmp_y;
 	cont_map_column = 0;
+	cont_fragment_column = ((x * game->map_fragment->x) - n_columns) / 2;
 	while (cont_map_column < n_columns)
 	{
-		if (n_columns - cont_map_column < tmp_x->x)
-			tmp_x->x = n_columns - cont_map_column; //esto tiene que afectar a todos los nodos de la derecha y liberar las columnas sobrantes del array
-		ft_printf("Map: %d, %d, %d, %d\n", cont_map_line, cont_map_column,
-			cont_fragment_line, tmp_x->x);
-		ft_strncpy(tmp_x->map[cont_fragment_line],
-			&game->map->array_content[cont_map_line][cont_map_column],
-			tmp_x->x);
-		ft_printf("hola\n");
-		cont_map_column += tmp_x->x;
-		tmp_x = tmp_x->right;
+		tmp_x->map[cont_fragment_line][cont_fragment_column] =
+			game->map->array_content[cont_map_line][cont_map_column];
+		cont_map_column++;
+		cont_fragment_column++;
+		if (cont_fragment_column == tmp_x->x)
+		{
+			cont_fragment_column = 0;
+			tmp_x = tmp_x->right;
+		}
 	}
 }
 
-void	ft_copy_map_to_fragment(t_game *game)//arreglar
+void	ft_copy_map_to_fragment(t_game *game, int x, int y)
 {
 	t_map_fragment	*tmp_y;
 	int				cont_map_line;
 	int				cont_fragment_line;
-	int				n_lines;
 
-	n_lines = game->map->lines;
 	tmp_y = game->map_fragment;
 	cont_map_line = 0;
-	while (cont_map_line < n_lines)
+	cont_fragment_line = ((y * game->map_fragment->y) - game->map->lines) / 2;
+	ft_printf("cont_fragment_line %d\n", cont_fragment_line);
+	while (cont_map_line < game->map->lines)
 	{
-		if (n_lines - cont_map_line < game->map_fragment->y)
-			game->map_fragment->y = n_lines - cont_map_line;//esto tiene que afectar a todos los nodos de abajo y liberar las lineas sobrantes del array
-		cont_fragment_line = 0;
-		while (cont_fragment_line < game->map_fragment->y)
+		ft_copy_map_to_fragment_line(game, tmp_y, cont_map_line,
+			cont_fragment_line, x);
+		cont_map_line ++;
+		cont_fragment_line++;
+		if (cont_fragment_line == tmp_y->y)
 		{
-			ft_copy_map_to_fragment_line(game, tmp_y, cont_map_line,
-				cont_fragment_line);
-			cont_fragment_line++;
-			cont_map_line++;
+			cont_fragment_line = 0;
+			tmp_y = tmp_y->down;
 		}
-		tmp_y = tmp_y->down;
 	}
 }
 
@@ -357,13 +334,12 @@ void	ft_map_fragment_print(t_map_fragment *map_fragment)
 	}
 }
 
-void	ft_map_fragment_alloc(t_game *game)
+void	ft_map_fragment_fill_char(t_game *game, int c)
 {
 	int x;
 	int y;
 	t_map_fragment *tmpy;
 	t_map_fragment *tmpx;
-	char identificador = 'A';
 
 	tmpy = game->map_fragment;
 	while (tmpy)
@@ -376,17 +352,45 @@ void	ft_map_fragment_alloc(t_game *game)
 			{
 				x = 0;
 				while (x < tmpx->x)
+					tmpx->map[y][x++] = c;
+				y++;
+			}
+			tmpx = tmpx->right;
+		}
+		tmpy = tmpy->down;
+	}
+}
+
+t_map_fragment	*ft_map_fragment_search_player(t_game *game)
+{
+	t_map_fragment	*tmp_y;
+	t_map_fragment	*tmp_x;
+	int				x;
+	int				y;
+
+	tmp_y = game->map_fragment;
+	while (tmp_y)
+	{
+		tmp_x = tmp_y;
+		while (tmp_x)
+		{
+			y = 0;
+			while (y < tmp_x->y)
+			{
+				x = 0;
+				while (x < tmp_x->x)
 				{
-					tmpx->map[y][x] = identificador;
+					if (tmp_x->map[y][x] == 'P')
+						return (tmp_x);
 					x++;
 				}
 				y++;
 			}
-			tmpx = tmpx->right;
-			identificador++;
+			tmp_x = tmp_x->right;
 		}
-		tmpy = tmpy->down;
+		tmp_y = tmp_y->down;
 	}
+	return (0);
 }
 
 t_map_fragment	*ft_map_fragment_loading(t_game *game)
@@ -401,7 +405,10 @@ t_map_fragment	*ft_map_fragment_loading(t_game *game)
 	ft_printf("Map fragment created\n");
 	ft_map_fragment_extend(game, x, y);
 	ft_printf("Map fragment extended\n");
-	ft_map_fragment_alloc(game);
+	ft_map_fragment_fill_char(game, ' ');
+	ft_printf("Map copied fill char space\n");
+	ft_map_fragment_print(game->map_fragment);
+	ft_copy_map_to_fragment(game, x, y);
 	ft_printf("Map copied to fragment\n");
 	ft_map_fragment_print(game->map_fragment);
 	return (game->map_fragment);

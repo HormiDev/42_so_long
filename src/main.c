@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 14:49:33 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/09/27 21:45:49 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/10/09 12:56:35 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int main(int argc, char **argv)
 	close(fd);
 	ft_printf("Map read successfully\n");
 	ft_file_print(game->map);
+	ft_printf("\n");
 	ft_game_clear(game);
 	return (0);
 	/*
