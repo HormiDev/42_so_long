@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 14:49:33 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/10/09 12:56:35 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/10/11 03:09:01 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,22 @@ int main(int argc, char **argv)
 	t_game *game;
 
 	if (argc != 2)
-		ft_error_so_long(0, 1);
+		ft_error_so_long(0, 2);
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
-		ft_error_so_long(0, 2);
+		ft_error_so_long(0, 3);
 	game = ft_game_loading(fd);
-	
 	if (!game)
 	{
 		ft_putstr_fd("Error\nCould not read map\n", 2);
 		close(fd);
 		return (1);
 	}
-	close(fd);
-	ft_printf("Map read successfully\n");
 	ft_file_print(game->map);
 	ft_printf("\n");
+	ft_printf("x:%d y:%d\n", game->win_width, game->win_height);
+	mlx_loop(game->mlx);
+	ft_printf("Game loaded\n");
 	ft_game_clear(game);
 	return (0);
 	/*

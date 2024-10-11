@@ -6,21 +6,21 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 00:24:47 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/10/09 20:52:20 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/10/10 23:56:20 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-t_map_fragment	*ft_map_fragment_new(void)
+t_map_fragment	*ft_map_fragment_new(t_game *game)
 {
 	t_map_fragment	*map_fragment;
 
 	map_fragment = (t_map_fragment *)malloc(sizeof(t_map_fragment));
 	if (!map_fragment)
-		return (0);
-	map_fragment->x = MAX_WIN_WIDTH / TILE_SIZE;
-	map_fragment->y = MAX_WIN_HEIGHT / TILE_SIZE;
+		ft_error_so_long(game, 1);
+	map_fragment->x = game->win_width / TILE_SIZE;
+	map_fragment->y = game->win_height / TILE_SIZE;
 	map_fragment->map = ft_create_str_rectangular_array
 		(map_fragment->x, map_fragment->y);
 	if (!map_fragment->map)
@@ -78,13 +78,13 @@ void	ft_map_fragment_clear(t_map_fragment *map_fragment)
 	ft_map_fragment_clear_top_row(map_fragment);
 }
 
-t_map_fragment	*ft_map_fragment_add_right(t_map_fragment *map_fragment)
+t_map_fragment	*ft_map_fragment_add_right(t_map_fragment *map_fragment, t_game *game)
 {
 	t_map_fragment	*new_map_fragment;
 
 	if (!map_fragment)
 		return (0);
-	new_map_fragment = ft_map_fragment_new();
+	new_map_fragment = ft_map_fragment_new(game);
 	if (!new_map_fragment)
 		return (0);
 	map_fragment->right = new_map_fragment;
@@ -102,13 +102,13 @@ t_map_fragment	*ft_map_fragment_add_right(t_map_fragment *map_fragment)
 	return (new_map_fragment);
 }
 
-t_map_fragment	*ft_map_fragment_add_left(t_map_fragment *map_fragment)
+t_map_fragment	*ft_map_fragment_add_left(t_map_fragment *map_fragment, t_game *game)
 {
 	t_map_fragment	*new_map_fragment;
 
 	if (!map_fragment)
 		return (0);
-	new_map_fragment = ft_map_fragment_new();
+	new_map_fragment = ft_map_fragment_new(game);
 	if (!new_map_fragment)
 		return (0);
 	map_fragment->left = new_map_fragment;
@@ -126,13 +126,13 @@ t_map_fragment	*ft_map_fragment_add_left(t_map_fragment *map_fragment)
 	return (new_map_fragment);
 }
 
-t_map_fragment	*ft_map_fragment_add_up(t_map_fragment *map_fragment)
+t_map_fragment	*ft_map_fragment_add_up(t_map_fragment *map_fragment, t_game *game)
 {
 	t_map_fragment	*new_map_fragment;
 
 	if (!map_fragment)
 		return (0);
-	new_map_fragment = ft_map_fragment_new();
+	new_map_fragment = ft_map_fragment_new(game);
 	if (!new_map_fragment)
 		return (0);
 	map_fragment->up = new_map_fragment;
@@ -150,13 +150,13 @@ t_map_fragment	*ft_map_fragment_add_up(t_map_fragment *map_fragment)
 	return (new_map_fragment);
 }
 
-t_map_fragment	*ft_map_fragment_add_down(t_map_fragment *map_fragment)
+t_map_fragment	*ft_map_fragment_add_down(t_map_fragment *map_fragment, t_game *game)
 {
 	t_map_fragment	*new_map_fragment;
 
 	if (!map_fragment)
 		return (0);
-	new_map_fragment = ft_map_fragment_new();
+	new_map_fragment = ft_map_fragment_new(game);
 	if (!new_map_fragment)
 		return (0);
 	map_fragment->down = new_map_fragment;
@@ -212,14 +212,14 @@ void	ft_map_fragment_extend(t_game *game, int x, int y)
 		tmp_x = tmp_y;
 		while (x_aux > 1)
 		{
-			tmp_x = ft_map_fragment_add_right(tmp_x);
+			tmp_x = ft_map_fragment_add_right(tmp_x, game);
 			if (!tmp_x)
 				ft_error_so_long(game, 1);
 			x_aux--;
 		}
 		if (y > 1)
 		{
-			tmp_y = ft_map_fragment_add_down(tmp_y);
+			tmp_y = ft_map_fragment_add_down(tmp_y, game);
 			if (!tmp_y)
 				ft_error_so_long(game, 1);
 		}
@@ -379,11 +379,8 @@ t_map_fragment	*ft_map_fragment_search_player(t_game *game)
 			{
 				x = 0;
 				while (x < tmp_x->x)
-				{
-					if (tmp_x->map[y][x] == 'P')
+					if (tmp_x->map[y][x++] == 'P')
 						return (tmp_x);
-					x++;
-				}
 				y++;
 			}
 			tmp_x = tmp_x->right;
@@ -393,13 +390,13 @@ t_map_fragment	*ft_map_fragment_search_player(t_game *game)
 	return (0);
 }
 
-t_map_fragment	*ft_map_fragment_loading(t_game *game)
+void	ft_map_fragment_loading(t_game *game)
 {
 	int				x;
 	int				y;
 
 	ft_map_fragment_necesary(game, &x, &y);
-	game->map_fragment = ft_map_fragment_new();
+	game->map_fragment = ft_map_fragment_new(game);
 	if (!game->map_fragment)
 		ft_error_so_long(game, 1);
 	ft_printf("Map fragment created\n");
@@ -407,9 +404,8 @@ t_map_fragment	*ft_map_fragment_loading(t_game *game)
 	ft_printf("Map fragment extended\n");
 	ft_map_fragment_fill_char(game, ' ');
 	ft_printf("Map copied fill char space\n");
-	ft_map_fragment_print(game->map_fragment);
 	ft_copy_map_to_fragment(game, x, y);
 	ft_printf("Map copied to fragment\n");
 	ft_map_fragment_print(game->map_fragment);
-	return (game->map_fragment);
+	game->map_fragment = ft_map_fragment_search_player(game);
 }

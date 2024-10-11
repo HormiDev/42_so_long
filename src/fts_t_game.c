@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 19:40:40 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/10/01 00:12:48 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/10/11 03:19:25 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,22 @@ t_game	*ft_game_init()
 }
 
 void	ft_game_clear(t_game *game)
-{
-	ft_file_clear(&game->map);
+{	if (!game)
+		return ;
+	ft_printf("Game cleared\n");
+	if (game->map)
+		ft_file_clear(&game->map);
 	if (game->mlx && game->win)
 		mlx_destroy_window(game->mlx, game->win);
 	if (game->mlx)
+	{
 		mlx_destroy_display(game->mlx);
+		free(game->mlx);
+	}
 	if (game->map_fragment)
 		ft_map_fragment_clear(game->map_fragment);
+	if (game->sprites)
+		free(game->sprites);
 	free(game);
 }
 
@@ -47,19 +55,35 @@ t_game	*ft_game_loading(int fd)
 
 	game = ft_game_init();
 	if (!game)
+	{
+		close(fd);
 		ft_error_so_long(0, 3);
-	ft_printf("Game initialized\n");
+	}
 	game->map = ft_create_file_from_fd(fd);
+	close(fd);
 	if (!ft_checkmap(game->map))
 		ft_error_so_long(game, 4);
-	ft_printf("Map created\n");
-	ft_printf("Map lines: %d\n", game->map->lines);
-	game->map_fragment = ft_map_fragment_loading(game);
+	ft_window_size(game);
+	ft_map_fragment_loading(game);
 	if (!game->map_fragment)
-	{
-		ft_game_clear(game);
-		return (0);
-	}
+		ft_error_so_long(game, 0);
 	ft_printf("Map fragment created\n");
+	game->mlx = mlx_init();
+	if (!game->mlx)
+		ft_error_so_long(game, 1);
+	ft_printf("init mlx\n");
+	ft_init_window(game);
 	return (game);
+}
+
+int	ft_game_close(void *param)
+{
+	t_game	*game;
+
+    game = (t_game *)param;
+	if (game)
+		ft_game_clear(game);
+	ft_printf("\e[31mThe game has been closed.\n\e[0m");
+	exit(0);
+	return (0);
 }

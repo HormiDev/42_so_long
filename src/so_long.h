@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 16:24:11 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/10/03 00:53:29 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/10/11 02:49:17 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void			ft_error_so_long(t_game *game, int error);
 t_game			*ft_game_init();
 void			ft_game_clear(t_game *game);
 t_game			*ft_game_loading(int fd);
+int				ft_game_close(void *param);
 
 int				ft_checkmap(t_file *map);
 int				ft_map_is_rectangular(t_file *map);
@@ -86,12 +87,14 @@ void			ft_localize_player_in_map(t_file *map, int *x, int *y);
 
 t_map_fragment	*ft_map_fragment_new();
 void			ft_map_fragment_clear(t_map_fragment *map_fragment);
-t_map_fragment	*ft_map_fragment_loading(t_game *game);
-t_map_fragment	*ft_map_fragment_add_right(t_map_fragment *map_fragment);
-t_map_fragment	*ft_map_fragment_add_left(t_map_fragment *map_fragment);
-t_map_fragment	*ft_map_fragment_add_up(t_map_fragment *map_fragment);
-t_map_fragment	*ft_map_fragment_add_down(t_map_fragment *map_fragment);
+void			ft_map_fragment_loading(t_game *game);
+t_map_fragment	*ft_map_fragment_add_right(t_map_fragment *map_fragment, t_game *game);
+t_map_fragment	*ft_map_fragment_add_left(t_map_fragment *map_fragment, t_game *game);
+t_map_fragment	*ft_map_fragment_add_up(t_map_fragment *map_fragment, t_game *game);
+t_map_fragment	*ft_map_fragment_add_down(t_map_fragment *map_fragment, t_game *game);
 void			ft_map_fragment_necesary(t_game *game, int *x, int *y);
 
+void			ft_window_size(t_game *game);
+void			ft_init_window(t_game *game);
 
 #endif
