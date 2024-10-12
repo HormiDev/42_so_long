@@ -6,7 +6,7 @@
 #    By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/19 16:55:30 by ide-dieg          #+#    #+#              #
-#    Updated: 2024/10/11 00:16:12 by ide-dieg         ###   ########.fr        #
+#    Updated: 2024/10/13 00:26:45 by ide-dieg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,9 @@ SRC = 	src/main.c \
 		src/fts_checkmap2.c \
 		src/fts_t_map_fragment.c \
 		src/fts_window.c \
+		src/fts_sprites.c \
+		src/ft_draw_fragment.c \
+		src/fts_config_controls.c \
 
 CC = gcc
 

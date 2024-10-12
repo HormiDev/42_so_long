@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 00:05:56 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/10/11 02:50:41 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/10/13 00:16:46 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,4 @@ void	ft_init_window(t_game *game)
 			game->win_height, "so_long");
 	if (!game->win)
 		ft_error_so_long(game, 1);
-	mlx_hook(game->win, 17, 0, ft_game_close, game);
 }

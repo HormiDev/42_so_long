@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 16:24:11 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/10/11 02:49:17 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/10/13 00:31:13 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,6 @@
 #  define TILE_SIZE 128
 # endif
 
-typedef struct s_sprite
-{
-	int		width;
-	int		height;
-	void	*img;
-}	t_sprite;
-
 typedef struct s_map_fragment
 {
 	int						x;
@@ -65,7 +58,7 @@ typedef struct s_game
 	int 			win_width;
 	int 			win_height;
 	void			*win;
-	t_sprite		*sprites;
+	void			*sprites[3];
 }	t_game;
 
 void			ft_error_so_long(t_game *game, int error);
@@ -96,5 +89,14 @@ void			ft_map_fragment_necesary(t_game *game, int *x, int *y);
 
 void			ft_window_size(t_game *game);
 void			ft_init_window(t_game *game);
+
+void			*ft_new_sprite(t_game *game, char *path);
+void			ft_init_sprites(t_game *game);
+void			ft_free_sprites(t_game *game);
+
+void			ft_draw_fragment(t_game *game);
+
+void			ft_config_controls(t_game *game);
+int				ft_key_press(int keycode, t_game *game);
 
 #endif
