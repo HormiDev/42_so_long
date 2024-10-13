@@ -6,7 +6,7 @@
 #    By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/19 16:55:30 by ide-dieg          #+#    #+#              #
-#    Updated: 2024/10/13 00:26:45 by ide-dieg         ###   ########.fr        #
+#    Updated: 2024/10/13 22:00:58 by ide-dieg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRC = 	src/main.c \
 		src/fts_sprites.c \
 		src/ft_draw_fragment.c \
 		src/fts_config_controls.c \
+		src/fts_t_player.c \
 
 CC = gcc
 

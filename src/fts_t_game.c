@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 19:40:40 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/10/13 00:23:43 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/10/13 21:52:11 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ void	ft_game_clear(t_game *game)
 	}
 	if (game->map_fragment)
 		ft_map_fragment_clear(game->map_fragment);
+	if (game->player)
+		free(game->player);
 	free(game);
 }
 
@@ -67,6 +69,7 @@ t_game	*ft_game_loading(int fd)
 		ft_error_so_long(game, 1);
 	ft_init_window(game);
 	ft_init_sprites(game);
+	game->player = ft_player_config(game);
 	ft_config_controls(game);
 	ft_draw_fragment(game);
 	return (game);

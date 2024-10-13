@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 16:24:11 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/10/13 00:31:13 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/10/13 22:14:16 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,14 @@
 #  define TILE_SIZE 128
 # endif
 
+typedef struct s_player
+{
+	int		x;
+	int		y;
+	int		n_sprite;
+	char	tile;
+}	t_player;
+
 typedef struct s_map_fragment
 {
 	int						x;
@@ -58,7 +66,8 @@ typedef struct s_game
 	int 			win_width;
 	int 			win_height;
 	void			*win;
-	void			*sprites[3];
+	void			*sprites[4];
+	t_player		*player;
 }	t_game;
 
 void			ft_error_so_long(t_game *game, int error);
@@ -98,5 +107,8 @@ void			ft_draw_fragment(t_game *game);
 
 void			ft_config_controls(t_game *game);
 int				ft_key_press(int keycode, t_game *game);
+
+t_player		*ft_player_config(t_game *game);
+void			ft_localize_player(t_game *game, t_player *player);
 
 #endif
