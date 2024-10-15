@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 21:19:25 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/10/11 00:58:17 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/10/15 01:25:09 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ void	ft_error_so_long(t_game *game, int error)
 		ft_printf("The map needs more than two columns.\n");
 	else if (error == 8)
 		ft_printf("The map needs at least one player.\n");
+	else if (error == 9)
+		ft_printf("Some sprite does not exist.\n");
 	exit(0);
 }
 	

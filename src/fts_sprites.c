@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 20:50:04 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/10/13 19:45:11 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/10/15 01:54:04 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,13 @@ void 	ft_init_sprites(t_game *game)
 	game->sprites[1] = ft_new_sprite(game, "sprites/cesped_1.xpm");
 	game->sprites[2] = ft_new_sprite(game, "sprites/muro_1.xpm");
 	game->sprites[3] = ft_new_sprite(game, "sprites/jugador_1.xpm");
+	game->sprites[4] = ft_new_sprite(game, "sprites/key.xpm");
+	game->sprites[5] = ft_new_sprite(game, "sprites/cofre_cerrado.xpm");
 	i = 0;
-	while (i < 4)
+	while (i < 6)
 	{
 		if (!game->sprites[i])
-			ft_error_so_long(game, 0);
+			ft_error_so_long(game, 9);
 		i++;
 	}	
 }
@@ -62,7 +64,7 @@ void	ft_free_sprites(t_game *game)
 	int	i;
 
 	i = 0;
-	while (i < 4)
+	while (i < 6)
 	{
 		if (game->sprites[i])
 			mlx_destroy_image(game->mlx, game->sprites[i]);

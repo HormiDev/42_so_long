@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 16:24:11 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/10/13 22:14:16 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/10/15 01:53:18 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ typedef struct s_game
 	int 			win_width;
 	int 			win_height;
 	void			*win;
-	void			*sprites[4];
+	void			*sprites[6];
 	t_player		*player;
 }	t_game;
 
