@@ -6,7 +6,7 @@
 #    By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/19 16:55:30 by ide-dieg          #+#    #+#              #
-#    Updated: 2024/10/13 22:00:58 by ide-dieg         ###   ########.fr        #
+#    Updated: 2024/10/15 17:36:15 by ide-dieg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ SRC = 	src/main.c \
 		src/fts_config_controls.c \
 		src/fts_t_player.c \
 
-CC = gcc
+CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
 
