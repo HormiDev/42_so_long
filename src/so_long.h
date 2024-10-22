@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 16:24:11 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/10/15 01:53:18 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/10/22 02:01:14 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,10 @@ typedef struct s_game
 	int 			win_width;
 	int 			win_height;
 	void			*win;
-	void			*sprites[6];
+	void			*sprites[38];
 	t_player		*player;
+	int				count_moves;
+	int				keys;
 }	t_game;
 
 void			ft_error_so_long(t_game *game, int error);
@@ -110,5 +112,15 @@ int				ft_key_press(int keycode, t_game *game);
 
 t_player		*ft_player_config(t_game *game);
 void			ft_localize_player(t_game *game, t_player *player);
+void			ft_proces_player_tile(t_game *game, t_player *player);
+
+void			ft_process_char_map(t_game *game);
+
+void			ft_count_keys(t_game *game);
+
+void			ft_move_up(t_game *game);
+void			ft_move_down(t_game *game);
+void			ft_move_left(t_game *game);
+void			ft_move_right(t_game *game);
 
 #endif

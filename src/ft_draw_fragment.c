@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 23:52:57 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/10/15 16:48:40 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/10/21 01:27:00 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,18 @@ void	ft_draw_tile(t_game *game, int x, int y, int n_sprite)
 }
 void	ft_draw_player(t_game *game, int x, int y)
 {
-	mlx_put_image_to_window(game->mlx, game->win, game->sprites[1],
-			x + (TILE_SIZE - ((t_img *)game->sprites[1])->width),
-			y + (TILE_SIZE - ((t_img *)game->sprites[1])->height));
-	mlx_put_image_to_window(game->mlx, game->win, game->sprites[3],
-			x - 18 + (TILE_SIZE - ((t_img *)game->sprites[3])->width),
-			y + (TILE_SIZE - ((t_img *)game->sprites[3])->height));
+	mlx_put_image_to_window(game->mlx, game->win, game->sprites[game->player->tile - 45],
+			x + (TILE_SIZE - ((t_img *)game->sprites[game->player->tile - 45])->width),
+			y + (TILE_SIZE - ((t_img *)game->sprites[game->player->tile - 45])->height));
+	mlx_put_image_to_window(game->mlx, game->win, game->sprites[game->player->n_sprite],
+			x - 18 + (TILE_SIZE - ((t_img *)game->sprites[game->player->n_sprite])->width),
+			y + (TILE_SIZE - ((t_img *)game->sprites[game->player->n_sprite])->height));
+	if (game->player->y == game->map_fragment->y - 1 && 
+			(game->player->tile == 12 + '0' ||game->player->tile == 4 + '0' ||
+			game->player->tile == 6 + '0' || game->player->tile == 7 + '0' ||
+			game->player->tile == 14 + '0' || game->player->tile == 5 + '0' ||
+			game->player->tile == 13 + '0'))
+		ft_draw_tile(game, x, y + TILE_SIZE, 1);
 }
 
 void	ft_draw_fragment(t_game *game)
@@ -40,16 +46,16 @@ void	ft_draw_fragment(t_game *game)
 		y = 0;
 		while (y < game->map_fragment->y)
 		{
-			if (game->map_fragment->map[y][x] == '0')
-				ft_draw_tile(game, x * TILE_SIZE, y * TILE_SIZE, 1);
-			else if (game->map_fragment->map[y][x] == '1')
+			if (game->map_fragment->map[y][x] >= 46 && game->map_fragment->map[y][x] <= 76)
+				ft_draw_tile(game, x * TILE_SIZE, y * TILE_SIZE, game->map_fragment->map[y][x] - 45);
+			else if (game->map_fragment->map[y][x] == '/')
 				ft_draw_tile(game, x * TILE_SIZE, y * TILE_SIZE, 2);
 			else if (game->map_fragment->map[y][x] == 'P')
 				ft_draw_player(game, x * TILE_SIZE, y * TILE_SIZE);
-			else if (game->map_fragment->map[y][x] == 'C')
-				ft_draw_tile(game, x * TILE_SIZE, y * TILE_SIZE, 4);
-			else if (game->map_fragment->map[y][x] == 'E')
-				ft_draw_tile(game, x * TILE_SIZE, y * TILE_SIZE, 5);
+			else if (game->map_fragment->map[y][x] == 'c')
+				ft_draw_tile(game, x * TILE_SIZE, y * TILE_SIZE, 33);
+			else if (game->map_fragment->map[y][x] == 'e')
+				ft_draw_tile(game, x * TILE_SIZE, y * TILE_SIZE, 32);
 			else
 				ft_draw_tile(game, x * TILE_SIZE, y * TILE_SIZE, 0);
 			y++;

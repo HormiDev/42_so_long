@@ -6,7 +6,7 @@
 #    By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/19 16:55:30 by ide-dieg          #+#    #+#              #
-#    Updated: 2024/10/15 17:36:15 by ide-dieg         ###   ########.fr        #
+#    Updated: 2024/10/22 01:50:01 by ide-dieg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,8 @@ SRC = 	src/main.c \
 		src/ft_draw_fragment.c \
 		src/fts_config_controls.c \
 		src/fts_t_player.c \
+		src/fts_process_char_map.c \
+		src/ft_count_keys.c \
 
 CC = cc
 
