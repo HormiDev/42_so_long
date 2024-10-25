@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 23:52:57 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/10/21 01:27:00 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/10/23 19:19:54 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,9 @@ void	ft_draw_fragment(t_game *game)
 				ft_draw_player(game, x * TILE_SIZE, y * TILE_SIZE);
 			else if (game->map_fragment->map[y][x] == 'c')
 				ft_draw_tile(game, x * TILE_SIZE, y * TILE_SIZE, 33);
-			else if (game->map_fragment->map[y][x] == 'e')
+			else if (game->map_fragment->map[y][x] == 'e' && game->keys > 0)
+				ft_draw_tile(game, x * TILE_SIZE, y * TILE_SIZE, 31);
+			else if (game->map_fragment->map[y][x] == 'e' && game->keys <= 0)
 				ft_draw_tile(game, x * TILE_SIZE, y * TILE_SIZE, 32);
 			else
 				ft_draw_tile(game, x * TILE_SIZE, y * TILE_SIZE, 0);

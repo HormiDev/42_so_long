@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 00:24:47 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/10/10 23:56:20 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/10/23 21:41:13 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -261,7 +261,6 @@ void	ft_copy_map_to_fragment(t_game *game, int x, int y)
 	tmp_y = game->map_fragment;
 	cont_map_line = 0;
 	cont_fragment_line = ((y * game->map_fragment->y) - game->map->lines) / 2;
-	ft_printf("cont_fragment_line %d\n", cont_fragment_line);
 	while (cont_map_line < game->map->lines)
 	{
 		ft_copy_map_to_fragment_line(game, tmp_y, cont_map_line,
@@ -399,13 +398,8 @@ void	ft_map_fragment_loading(t_game *game)
 	game->map_fragment = ft_map_fragment_new(game);
 	if (!game->map_fragment)
 		ft_error_so_long(game, 1);
-	ft_printf("Map fragment created\n");
 	ft_map_fragment_extend(game, x, y);
-	ft_printf("Map fragment extended\n");
 	ft_map_fragment_fill_char(game, ' ');
-	ft_printf("Map copied fill char space\n");
 	ft_copy_map_to_fragment(game, x, y);
-	ft_printf("Map copied to fragment\n");
-	ft_map_fragment_print(game->map_fragment);
 	game->map_fragment = ft_map_fragment_search_player(game);
 }

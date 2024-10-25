@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 20:50:04 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/10/20 22:38:00 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/10/23 21:41:48 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,11 @@ void 	*ft_new_sprite(t_game *game, char *path)
 	}
 	width = ft_atoi(data_line[0] + 1);
 	height = ft_atoi(data_line[1]);
-	ft_printf("width:%d height:%d\n", width, height);
 	sprite = mlx_xpm_file_to_image(game->mlx, path, &width, &height);
 	ft_file_clear(&sprite_file);
 	ft_free_split(data_line);
 	if (!sprite)
 		ft_error_so_long(game, 1);
-	ft_printf("%s\n", path);
 	return (sprite);
 }
 
@@ -77,7 +75,7 @@ void 	ft_init_sprites(t_game *game)
 	game->sprites[29] = ft_new_sprite(game, "sprites/cesped_26.xpm");
 	game->sprites[30] = ft_new_sprite(game, "sprites/cesped_27.xpm");
 	game->sprites[31] = ft_new_sprite(game, "sprites/cofre_cerrado.xpm");
-	game->sprites[32] = ft_new_sprite(game, "sprites/cofre_cerrado.xpm");
+	game->sprites[32] = ft_new_sprite(game, "sprites/cofre_abierto.xpm");
 	game->sprites[33] = ft_new_sprite(game, "sprites/key.xpm");
 	game->sprites[34] = ft_new_sprite(game, "sprites/jugador_arriba_0.xpm");
 	game->sprites[35] = ft_new_sprite(game, "sprites/jugador_derecha_0.xpm");

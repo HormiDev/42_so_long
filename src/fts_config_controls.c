@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 00:25:28 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/10/22 02:06:52 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/10/23 21:37:51 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	ft_move_up(t_game *game)
 	if (game->player->tile == 'e')
 	{
 		if (game->keys == 0)
-			ft_game_close(game);
+			ft_game_win(game);
 		else
 			{
 				ft_printf("You still need to collect %d keys\n", game->keys);
@@ -83,7 +83,7 @@ void	ft_move_left(t_game *game)
 	if (game->player->tile == 'e')
 	{
 		if (game->keys == 0)
-			ft_game_close(game);
+			ft_game_win(game);
 		else
 			{
 				ft_printf("You still need to collect %d keys\n", game->keys);
@@ -125,7 +125,7 @@ void	ft_move_down(t_game *game)
 	if (game->player->tile == 'e')
 	{
 		if (game->keys == 0)
-			ft_game_close(game);
+			ft_game_win(game);
 		else
 			{
 				ft_printf("You still need to collect %d keys\n", game->keys);
@@ -167,7 +167,7 @@ void	ft_move_right(t_game *game)
 	if (game->player->tile == 'e')
 	{
 		if (game->keys == 0)
-			ft_game_close(game);
+			ft_game_win(game);
 		else
 			{
 				ft_printf("You still need to collect %d keys\n", game->keys);

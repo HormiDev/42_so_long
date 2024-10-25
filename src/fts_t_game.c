@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 19:40:40 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/10/22 01:48:47 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/10/24 00:39:33 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	ft_game_clear(t_game *game)
 {
 	if (!game)
 		return ;
-	ft_printf("Game cleared\n");
 	if (game->map)
 		ft_file_clear(&game->map);
 	if (game->mlx && game->win)
@@ -87,4 +86,15 @@ int	ft_game_close(void *param)
 	ft_printf("\e[31mThe game has been closed.\n\e[0m");
 	exit(0);
 	return (0);
+}
+
+void	ft_game_win(t_game *game)
+{
+	if (game)
+	{
+		ft_printf("Number of movements %d\n", ++game->count_moves);
+		ft_print_victory_message(game);
+		ft_game_clear(game);
+	}
+	exit(0);
 }

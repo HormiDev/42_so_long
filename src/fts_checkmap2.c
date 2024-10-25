@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 02:14:44 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/09/25 19:34:01 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/10/24 21:38:54 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,11 @@ int	ft_check_characters_map(t_file *map)
 
 void	ft_check_roads(t_file *map, int x, int y)
 {
+	if (map->array_content[x][y] == 'E')
+	{
+		map->array_content[x][y] = '1';
+		return ;
+	}
 	map->array_content[x][y] = '1';
 	if (map->array_content[x + 1][y] != '1')
 		ft_check_roads(map, x + 1, y);

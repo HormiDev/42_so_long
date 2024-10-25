@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 21:19:25 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/10/15 01:25:09 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/10/23 15:50:09 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,8 @@ void	ft_error_so_long(t_game *game, int error)
 {
 	if (game)
 		ft_game_clear(game);
-	ft_printf("\e[31mError\n\e[33m");
-	if (error == 0)
-		ft_printf("Unregistered error.\n");
-	else if (error == 1)
+	perror("\e[31mError\n\e[33m");
+	if (error == 1)
 		ft_printf("Memory allocation error.\n");
 	else if (error == 2)
 		ft_printf("Invalid arguments. Use [./so_long \"maps/map_name.ber\"].\n");
@@ -37,6 +35,7 @@ void	ft_error_so_long(t_game *game, int error)
 		ft_printf("The map needs at least one player.\n");
 	else if (error == 9)
 		ft_printf("Some sprite does not exist.\n");
+	ft_printf("\e[39m\n");
 	exit(0);
 }
 	

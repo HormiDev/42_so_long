@@ -6,7 +6,7 @@
 #    By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/19 16:55:30 by ide-dieg          #+#    #+#              #
-#    Updated: 2024/10/22 01:50:01 by ide-dieg         ###   ########.fr        #
+#    Updated: 2024/10/25 01:49:22 by ide-dieg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ SRC = 	src/main.c \
 		src/fts_t_player.c \
 		src/fts_process_char_map.c \
 		src/ft_count_keys.c \
+		src/fts_history.c \
 
 CC = cc
 
@@ -33,26 +34,70 @@ CFLAGS = -Wall -Wextra -Werror
 LFLAGS = -lXext -lX11 -lm
 
 LIBSA = minilibx-linux/libmlx.a \
-		minilibx-linux/libmlx_Linux.a \
 		42_Libft/libft.a \
 		
 
-build: build_minilibx-linux build_libft
-	$(CC) $(CFLAGS) -o $(NAME) $(SRC) $(LIBSA) $(LFLAGS)
+build: ide-dieg so_long_title build_minilibx-linux build_libft
+	@if [ ! -f $(NAME) ]; then \
+		echo "Building $(NAME)..."; \
+		$(CC) $(CFLAGS) -o $(NAME) $(SRC) $(LIBSA) $(LFLAGS); \
+		echo "$(NAME) built!"; \
+	fi
 
 fclean: fclean_minilibx-linux fclean_libft
-	rm -f $(NAME)
+	@echo "Cleaning $(NAME)..."
+	@rm -f $(NAME)
+	@echo "$(NAME) cleaned!"
 
 re: fclean build
 
 build_minilibx-linux:
-	make -C minilibx-linux
+	@if [ ! -f minilibx-linux/libmlx.a ]; then \
+		echo "Compiling Minilibx-linux..."; \
+		make -C minilibx-linux > /dev/null 2>&1; \
+		echo "Minilibx-linux compiled!"; \
+	fi
 
 fclean_minilibx-linux:
-	make -C minilibx-linux clean
+	@echo "Cleaning Minilibx-linux..."
+	@make -C minilibx-linux clean > /dev/null 2>&1
+	@echo "Minilibx-linux cleaned!"
 
 build_libft:
-	make additional -C 42_Libft
+	@if [ ! -f 42_Libft/libft.a ]; then \
+		echo "Compiling Libft..."; \
+		make additional -C 42_Libft > /dev/null 2>&1; \
+		echo "Libft compiled!"; \
+	fi
 
 fclean_libft:
-	make fclean -C 42_Libft
+	@echo "Cleaning Libft..."
+	@make fclean -C 42_Libft > /dev/null 2>&1
+	@echo "Libft cleaned!"
+
+ROJO = \033[0;31m
+NC = \033[0m
+NARANJA = \033[0;33m
+AZUL = \033[0;34m
+VERDE = \033[0;32m
+
+ide-dieg:
+	@clear	
+	@echo "$(ROJO)██╗██████╗ ███████╗    ██████╗ ██╗███████╗ ██████╗ $(AZUL)         ██╗  ██╗██████╗ "
+	@echo "$(ROJO)██║██╔══██╗██╔════╝    ██╔══██╗██║██╔════╝██╔════╝ $(AZUL)         ██║  ██║╚════██╗"
+	@echo "$(ROJO)██║██║  ██║█████╗█████╗██║  ██║██║█████╗  ██║  ███╗$(AZUL)         ███████║ █████╔╝"
+	@echo "$(ROJO)██║██║  ██║██╔══╝╚════╝██║  ██║██║██╔══╝  ██║   ██║$(AZUL)         ╚════██║██╔═══╝ "
+	@echo "$(ROJO)██║██████╔╝███████╗    ██████╔╝██║███████╗╚██████╔╝$(AZUL)              ██║███████╗"
+	@echo "$(ROJO)╚═╝╚═════╝ ╚══════╝    ╚═════╝ ╚═╝╚══════╝ ╚═════╝ $(AZUL)              ╚═╝╚══════╝"
+	@echo "$(NARANJA)██╗  ██╗ ██████╗ ██████╗ ███╗   ███╗██╗██████╗ ███████╗██╗   ██╗$(VERDE)       ██╗  "
+	@echo "$(NARANJA)██║  ██║██╔═══██╗██╔══██╗████╗ ████║██║██╔══██╗██╔════╝██║   ██║$(VERDE)   ██╗ ╚═██╗"
+	@echo "$(NARANJA)███████║██║   ██║██████╔╝██╔████╔██║██║██║  ██║█████╗  ██║   ██║$(VERDE)   ╚═╝   ██║"
+	@echo "$(NARANJA)██╔══██║██║   ██║██╔══██╗██║╚██╔╝██║██║██║  ██║██╔══╝  ╚██╗ ██╔╝$(VERDE)   ██╗   ██║"
+	@echo "$(NARANJA)██║  ██║╚██████╔╝██║  ██║██║ ╚═╝ ██║██║██████╔╝███████╗ ╚████╔╝ $(VERDE)   ╚═╝ ██╔═╝ "
+	@echo "$(NARANJA)╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚═╝╚═════╝ ╚══════╝  ╚═══╝  $(VERDE)       ╚═╝  $(NC)"
+
+so_long_title:
+	@echo " ____   __        __     __   __ _   ___ "
+	@echo "/ ___) /  \      (  )   /  \ (  ( \ / __)"
+	@echo "\\___ \(  O )____ / (_/\\(  O )/    /( (_ \ "
+	@echo "(____/ \__/(____)\____/ \__/ \_)__) \___/"

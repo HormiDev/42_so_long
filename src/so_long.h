@@ -6,13 +6,14 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 16:24:11 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/10/22 02:01:14 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/10/24 18:19:20 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
+# include <errno.h>
 # include "../minilibx-linux/mlx.h"
 # include "../minilibx-linux/mlx_int.h"
 # include "../42_Libft/libft.h"
@@ -78,6 +79,7 @@ t_game			*ft_game_init();
 void			ft_game_clear(t_game *game);
 t_game			*ft_game_loading(int fd);
 int				ft_game_close(void *param);
+void			ft_game_win(t_game *game);
 
 int				ft_checkmap(t_file *map);
 int				ft_map_is_rectangular(t_file *map);
@@ -122,5 +124,10 @@ void			ft_move_up(t_game *game);
 void			ft_move_down(t_game *game);
 void			ft_move_left(t_game *game);
 void			ft_move_right(t_game *game);
+
+void			ft_print_start_history(t_game *game);
+void			ft_print_start_history_es(t_game *game);
+void			ft_print_victory_message(t_game *game);
+void			ft_print_victory_message_es(t_game *game);
 
 #endif
