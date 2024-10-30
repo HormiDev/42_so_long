@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 22:00:33 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/10/21 21:43:14 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/10/30 22:04:05 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	ft_proces_player_tile(t_game *game, t_player *player)
 	player->tile = '0';
 	if (player->y > 0)
 	{
-		if(game->map_fragment->map[player->y - 1][player->x] == '.' ||
+		if (game->map_fragment->map[player->y - 1][player->x] == '.' ||
 			game->map_fragment->map[player->y - 1][player->x] == '/')
 			player->tile += 1;
 	}
@@ -63,7 +63,7 @@ void	ft_proces_player_tile(t_game *game, t_player *player)
 			player->tile += 1;
 	if (player->x < game->map_fragment->x - 1)
 	{
-		if(game->map_fragment->map[player->y][player->x + 1] == '.' ||
+		if (game->map_fragment->map[player->y][player->x + 1] == '.' ||
 			game->map_fragment->map[player->y][player->x + 1] == '/')
 			player->tile += 2;
 	}
@@ -73,7 +73,7 @@ void	ft_proces_player_tile(t_game *game, t_player *player)
 			player->tile += 2;
 	if (player->y < game->map_fragment->y - 1)
 	{
-		if(game->map_fragment->map[player->y + 1][player->x] == '.' ||
+		if (game->map_fragment->map[player->y + 1][player->x] == '.' ||
 			game->map_fragment->map[player->y + 1][player->x] == '/')
 			player->tile += 4;
 	}
@@ -83,7 +83,7 @@ void	ft_proces_player_tile(t_game *game, t_player *player)
 			player->tile += 4;
 	if (player->x > 0)
 	{
-		if(game->map_fragment->map[player->y][player->x - 1] == '.' ||
+		if (game->map_fragment->map[player->y][player->x - 1] == '.' ||
 			game->map_fragment->map[player->y][player->x - 1] == '/')
 			player->tile += 8;
 	}

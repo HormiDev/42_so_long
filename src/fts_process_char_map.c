@@ -6,20 +6,104 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 12:43:43 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/10/23 03:03:01 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/10/30 20:56:29 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+// arr[0] = i, arr[1] = j, arr[2] = tile_pseudo_count,
+// arr[3] = tile_count, arr[4] = tile
+void	ft_process_char_map_4(t_game *game, int *arr)
+{
+	while (arr[0] < game->map->lines)
+	{
+		arr[1] = 0;
+		while (arr[1] < game->map->list_content->len - 1)
+		{
+			if (game->map->array_content[arr[0]][arr[1]] == '0')
+			{
+				if (arr[2] == arr[3])
+				{
+					game->map->array_content[arr[0]][arr[1]] = arr[4] + 16;
+					arr[4] += 5;
+					arr[2] = 0;
+					arr[3]++;
+					if (arr[3] > 4)
+						arr[3] = 0;
+					if (arr[4] > '0' + 11)
+						arr[4] -= 12;
+				}
+				else
+					arr[2]++;
+			}
+			arr[1]++;
+		}
+		arr[0]++;
+	}
+}
+
+void	ft_process_char_map_3(t_game *game)
+{
+	int	i;
+	int	j;
+	int	arr[5];
+
+	i = 1;
+	while (i < game->map->lines)
+	{
+		j = 0;
+		while (j < game->map->list_content->len - 1)
+		{
+			if (game->map->array_content[i][j] == '/' &&
+				game->map->array_content[i - 1][j] != '/' &&
+				game->map->array_content[i - 1][j] != '.')
+				game->map->array_content[i][j] = '.';
+			j++;
+		}
+		i++;
+	}
+	arr[2] = 0;
+	arr[3] = 0;
+	arr[4] = '0';
+	arr[0] = 1;
+	ft_process_char_map_4(game, &arr[0]);
+}
+
+void	ft_process_char_map_2(t_game *game)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < game->map->lines)
+	{
+		j = 0;
+		while (j < game->map->list_content->len - 1)
+		{
+			if (game->map->array_content[i][j] == '0')
+			{
+				if (game->map->array_content[i - 1][j] == '/')
+					game->map->array_content[i][j] += 1;
+				if (game->map->array_content[i][j + 1] == '/')
+					game->map->array_content[i][j] += 2;
+				if (game->map->array_content[i + 1][j] == '/')
+					game->map->array_content[i][j] += 4;
+				if (game->map->array_content[i][j - 1] == '/')
+					game->map->array_content[i][j] += 8;
+			}
+			j++;
+		}
+		i++;
+	}
+	ft_process_char_map_3(game);
+}
+
 void	ft_process_char_map(t_game *game)
 {
-	int		i;
-	int		j;
-	int 	tile_pseudo_count;
-	int		tile_pseudo;
-	int		tile;
-	
+	int	i;
+	int	j;
+
 	i = 0;
 	while (i < game->map->lines)
 	{
@@ -36,69 +120,5 @@ void	ft_process_char_map(t_game *game)
 		}
 		i++;
 	}
-	i = 0;
-	while (i < game->map->lines)
-	{
-		j = 0;
-		while (j < game->map->list_content->len - 1)
-		{
-			if (game->map->array_content[i][j] == '0')
-			{
-				if (game->map->array_content[i - 1][j] == '/')
-					game->map->array_content[i][j]+= 1;
-				if (game->map->array_content[i][j + 1] == '/')
-					game->map->array_content[i][j]+= 2;	
-				if (game->map->array_content[i + 1][j] == '/')
-					game->map->array_content[i][j]+= 4;
-				if (game->map->array_content[i][j - 1] == '/')
-					game->map->array_content[i][j]+= 8;
-			}
-			j++;
-		}
-		i++;
-	}
-	i = 1;
-	while (i < game->map->lines)
-	{
-		j = 0;
-		while (j < game->map->list_content->len - 1)
-		{
-			if (game->map->array_content[i][j] == '/' &&
-					game->map->array_content[i - 1][j] != '/' &&
-					game->map->array_content[i - 1][j] != '.')
-				game->map->array_content[i][j] = '.';
-
-			j++;
-		}
-		i++;
-	}
-	tile_pseudo_count = 0;
-	tile_pseudo = 0;
-	tile = '0';
-	i = 1;
-	while (i < game->map->lines)
-	{
-		j = 0;
-		while (j < game->map->list_content->len - 1)
-		{
-			if (game->map->array_content[i][j] == '0')
-			{
-				if (tile_pseudo_count == tile_pseudo)
-				{
-					game->map->array_content[i][j] = tile + 16;
-					tile += 5;
-					tile_pseudo_count = 0;
-					tile_pseudo++;
-					if (tile_pseudo > 4)
-						tile_pseudo = 0;
-					if (tile > '0' + 11)
-						tile -= 12;
-				}
-				else
-					tile_pseudo_count++;
-			}
-			j++;
-		}
-		i++;
-	}
+	ft_process_char_map_2(game);
 }

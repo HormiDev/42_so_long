@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 00:24:47 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/10/23 21:41:13 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/10/30 21:55:29 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,8 @@ void	ft_map_fragment_clear(t_map_fragment *map_fragment)
 	ft_map_fragment_clear_top_row(map_fragment);
 }
 
-t_map_fragment	*ft_map_fragment_add_right(t_map_fragment *map_fragment, t_game *game)
+t_map_fragment	*ft_map_fragment_add_right(t_map_fragment *map_fragment,
+					t_game *game)
 {
 	t_map_fragment	*new_map_fragment;
 
@@ -102,7 +103,8 @@ t_map_fragment	*ft_map_fragment_add_right(t_map_fragment *map_fragment, t_game *
 	return (new_map_fragment);
 }
 
-t_map_fragment	*ft_map_fragment_add_left(t_map_fragment *map_fragment, t_game *game)
+t_map_fragment	*ft_map_fragment_add_left(t_map_fragment *map_fragment,
+					t_game *game)
 {
 	t_map_fragment	*new_map_fragment;
 
@@ -126,7 +128,8 @@ t_map_fragment	*ft_map_fragment_add_left(t_map_fragment *map_fragment, t_game *g
 	return (new_map_fragment);
 }
 
-t_map_fragment	*ft_map_fragment_add_up(t_map_fragment *map_fragment, t_game *game)
+t_map_fragment	*ft_map_fragment_add_up(t_map_fragment *map_fragment,
+					t_game *game)
 {
 	t_map_fragment	*new_map_fragment;
 
@@ -150,7 +153,8 @@ t_map_fragment	*ft_map_fragment_add_up(t_map_fragment *map_fragment, t_game *gam
 	return (new_map_fragment);
 }
 
-t_map_fragment	*ft_map_fragment_add_down(t_map_fragment *map_fragment, t_game *game)
+t_map_fragment	*ft_map_fragment_add_down(t_map_fragment *map_fragment,
+					t_game *game)
 {
 	t_map_fragment	*new_map_fragment;
 

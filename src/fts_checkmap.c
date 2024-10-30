@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 02:14:18 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/09/25 02:15:52 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/10/29 23:47:40 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,9 @@ void	ft_count_epc_map(t_file *map, int *e, int *p, int *c)
 	int	j;
 
 	i = 0;
+	*e = 0;
+	*p = 0;
+	*c = 0;
 	while (i < map->lines)
 	{
 		j = 0;
@@ -119,7 +122,7 @@ int	ft_checkmap(t_file *map)
 		return (0);
 	if (!ft_check_epc_map(map))
 		return (0);
-	if (!ft_check_map_roads(map))
+	if (!ft_check_map_roads_2(map))
 		return (0);
 	return (1);
 }

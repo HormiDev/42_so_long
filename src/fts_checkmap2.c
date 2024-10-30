@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 02:14:44 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/10/24 21:38:54 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/10/30 12:36:12 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,57 @@ int	ft_check_map_roads(t_file *map)
 	ft_count_epc_map(map_copy, &ecp[0], &ecp[1], &ecp[2]);
 	ft_file_clear(&map_copy);
 	if (ecp[0] != 0 || ecp[1] != 0 || ecp[2] != 0)
+		return (0);
+	return (1);
+}
+
+void	ft_check_roads_2(t_file *map, int x, int y)
+{
+	if (map->array_content[x + 1][y] == '0' ||
+		map->array_content[x + 1][y] == 'C')
+		map->array_content[x + 1][y] = 'P';
+	else if (map->array_content[x + 1][y] == 'E')
+		map->array_content[x + 1][y] = '1';
+	if (map->array_content[x - 1][y] == '0' ||
+		map->array_content[x - 1][y] == 'C')
+		map->array_content[x - 1][y] = 'P';
+	else if (map->array_content[x - 1][y] == 'E')
+		map->array_content[x - 1][y] = '1';
+	if (map->array_content[x][y + 1] == '0' ||
+		map->array_content[x][y + 1] == 'C')
+		map->array_content[x][y + 1] = 'P';
+	else  if (map->array_content[x][y + 1] == 'E')
+		map->array_content[x][y + 1] = '1';
+	if (map->array_content[x][y - 1] == '0' ||
+		map->array_content[x][y - 1] == 'C')
+		map->array_content[x][y - 1] = 'P';
+	else if (map->array_content[x][y - 1] == 'E')
+		map->array_content[x][y - 1] = '1';
+	map->array_content[x][y] = '1';
+}
+
+int	ft_check_map_roads_2(t_file *map)
+{
+	t_file	*map_copy;
+	int		epc[3];
+	int		x;
+	int		y;
+
+	map_copy = ft_file_dup(map);
+	if (!map_copy)
+		return (0);
+	epc[0] = 0;
+	epc[1] = 0;
+	epc[2] = 0;
+	ft_count_epc_map(map_copy, &epc[0], &epc[1], &epc[2]);
+	while (epc[1] != 0)
+	{
+		ft_localize_player_in_map(map_copy, &x, &y);
+		ft_check_roads_2(map_copy, x, y);
+		ft_count_epc_map(map_copy, &epc[0], &epc[1], &epc[2]);
+	}	
+	ft_file_clear(&map_copy);
+	if (epc[0] != 0 || epc[1] != 0 || epc[2] != 0)
 		return (0);
 	return (1);
 }

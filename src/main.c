@@ -6,16 +6,16 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 14:49:33 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/10/25 02:31:37 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/10/30 21:52:15 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	int fd;
-	t_game *game;
+	int		fd;
+	t_game	*game;
 
 	if (argc != 2)
 		ft_error_so_long(0, 2);

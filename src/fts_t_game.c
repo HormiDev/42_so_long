@@ -6,13 +6,13 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 19:40:40 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/10/24 00:39:33 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/10/30 21:47:49 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-t_game	*ft_game_init()
+t_game	*ft_game_init(void)
 {
 	t_game	*game;
 
@@ -80,7 +80,7 @@ int	ft_game_close(void *param)
 {
 	t_game	*game;
 
-    game = (t_game *)param;
+	game = (t_game *)param;
 	if (game)
 		ft_game_clear(game);
 	ft_printf("\e[31mThe game has been closed.\n\e[0m");
