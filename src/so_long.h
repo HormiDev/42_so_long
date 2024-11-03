@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 16:24:11 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/11/03 01:39:42 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/11/03 13:12:22 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,13 @@
 # include "../minilibx-linux/mlx_int.h"
 # include "../42_Libft/libft.h"
 
+# ifndef TILE_SIZE
+#  define TILE_SIZE 128
+# endif
+# if TILE_SIZE < 0
+#  undef TILE_SIZE
+#  define TILE_SIZE 128
+# endif
 # ifndef MAX_WIN_WIDTH
 #  define MAX_WIN_WIDTH 1920
 # endif
@@ -31,13 +38,6 @@
 # if MAX_WIN_HEIGHT < 0
 #  undef MAX_WIN_HEIGHT
 #  define MAX_WIN_HEIGHT 896
-# endif
-# ifndef TILE_SIZE
-#  define TILE_SIZE 128
-# endif
-# if TILE_SIZE < 0
-#  undef TILE_SIZE
-#  define TILE_SIZE 128
 # endif
 
 typedef struct s_player

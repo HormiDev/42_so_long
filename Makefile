@@ -6,7 +6,7 @@
 #    By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/19 16:55:30 by ide-dieg          #+#    #+#              #
-#    Updated: 2024/11/03 01:40:35 by ide-dieg         ###   ########.fr        #
+#    Updated: 2024/11/03 13:19:48 by ide-dieg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,22 @@ build: ide-dieg so_long_title build_minilibx-linux build_libft
 	@if [ ! -f $(NAME) ]; then \
 		echo "Building $(NAME)..."; \
 		$(CC) $(CFLAGS) -o $(NAME) $(SRC) $(LIBSA) $(LFLAGS); \
+		echo "$(NAME) built!"; \
+	fi
+
+build_windows_max_size: ide-dieg so_long_title build_minilibx-linux build_libft
+	@if [ ! -f $(NAME) ]; then \
+		echo "Building $(NAME)..."; \
+		read -p "Enter MAX_WIN_WIDTH: " WIDTH; \
+		read -p "Enter MAX_WIN_HEIGHT: " HEIGHT; \
+		$(CC) $(CFLAGS) -D MAX_WIN_WIDTH=$$WIDTH -D MAX_WIN_HEIGHT=$$HEIGHT -o $(NAME) $(SRC) $(LIBSA) $(LFLAGS); \
+		echo "$(NAME) built!"; \
+	else \
+		echo "Rebuilding $(NAME)..."; \
+		rm -f $(NAME); \
+		read -p "Enter MAX_WIN_WIDTH: " WIDTH; \
+		read -p "Enter MAX_WIN_HEIGHT: " HEIGHT; \
+		$(CC) $(CFLAGS) -D MAX_WIN_WIDTH=$$WIDTH -D MAX_WIN_HEIGHT=$$HEIGHT -o $(NAME) $(SRC) $(LIBSA) $(LFLAGS); \
 		echo "$(NAME) built!"; \
 	fi
 
