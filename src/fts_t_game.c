@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 19:40:40 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/10/30 21:47:49 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/11/03 00:09:01 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,15 @@ void	ft_game_clear(t_game *game)
 	free(game);
 }
 
+void	ft_game_loading_2(t_game *game)
+{
+	ft_init_window(game);
+	ft_init_sprites(game);
+	game->player = ft_player_config(game);
+	ft_config_controls(game);
+	ft_draw_fragment(game);
+}
+
 t_game	*ft_game_loading(int fd)
 {
 	t_game	*game;
@@ -68,11 +77,7 @@ t_game	*ft_game_loading(int fd)
 	game->mlx = mlx_init();
 	if (!game->mlx)
 		ft_error_so_long(game, 1);
-	ft_init_window(game);
-	ft_init_sprites(game);
-	game->player = ft_player_config(game);
-	ft_config_controls(game);
-	ft_draw_fragment(game);
+	ft_game_loading_2(game);
 	return (game);
 }
 
@@ -86,15 +91,4 @@ int	ft_game_close(void *param)
 	ft_printf("\e[31mThe game has been closed.\n\e[0m");
 	exit(0);
 	return (0);
-}
-
-void	ft_game_win(t_game *game)
-{
-	if (game)
-	{
-		ft_printf("Number of movements %d\n", ++game->count_moves);
-		ft_print_victory_message(game);
-		ft_game_clear(game);
-	}
-	exit(0);
 }

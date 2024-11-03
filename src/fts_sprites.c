@@ -6,17 +6,17 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 20:50:04 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/10/23 21:41:48 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/11/02 23:43:47 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void 	*ft_new_sprite(t_game *game, char *path)
+void	*ft_new_sprite(t_game *game, char *path)
 {
 	void	*sprite;
-	t_file 	*sprite_file;
-	char 	**data_line;
+	t_file	*sprite_file;
+	char	**data_line;
 	int		width;
 	int		height;
 
@@ -39,23 +39,8 @@ void 	*ft_new_sprite(t_game *game, char *path)
 	return (sprite);
 }
 
-void 	ft_init_sprites(t_game *game)
+void	ft_init_sprites_2(t_game *game)
 {
-	int	i;
-
-	game->sprites[0] = ft_new_sprite(game, "sprites/sprite_null.xpm");
-	game->sprites[1] = ft_new_sprite(game, "sprites/muro_0.xpm");
-	game->sprites[2] = ft_new_sprite(game, "sprites/muro_1.xpm");
-	game->sprites[3] = ft_new_sprite(game, "sprites/cesped_0.xpm");
-	game->sprites[4] = ft_new_sprite(game, "sprites/cesped_1.xpm");
-	game->sprites[5] = ft_new_sprite(game, "sprites/cesped_2.xpm");
-	game->sprites[6] = ft_new_sprite(game, "sprites/cesped_3.xpm");
-	game->sprites[7] = ft_new_sprite(game, "sprites/cesped_4.xpm");
-	game->sprites[8] = ft_new_sprite(game, "sprites/cesped_5.xpm");
-	game->sprites[9] = ft_new_sprite(game, "sprites/cesped_6.xpm");
-	game->sprites[10] = ft_new_sprite(game, "sprites/cesped_7.xpm");
-	game->sprites[11] = ft_new_sprite(game, "sprites/cesped_8.xpm");
-	game->sprites[12] = ft_new_sprite(game, "sprites/cesped_9.xpm");
 	game->sprites[13] = ft_new_sprite(game, "sprites/cesped_10.xpm");
 	game->sprites[14] = ft_new_sprite(game, "sprites/cesped_11.xpm");
 	game->sprites[15] = ft_new_sprite(game, "sprites/cesped_12.xpm");
@@ -81,14 +66,33 @@ void 	ft_init_sprites(t_game *game)
 	game->sprites[35] = ft_new_sprite(game, "sprites/jugador_derecha_0.xpm");
 	game->sprites[36] = ft_new_sprite(game, "sprites/jugador_abajo_0.xpm");
 	game->sprites[37] = ft_new_sprite(game, "sprites/jugador_izquierda_0.xpm");
+}
 
+void	ft_init_sprites(t_game *game)
+{
+	int	i;
+
+	game->sprites[0] = ft_new_sprite(game, "sprites/sprite_null.xpm");
+	game->sprites[1] = ft_new_sprite(game, "sprites/muro_0.xpm");
+	game->sprites[2] = ft_new_sprite(game, "sprites/muro_1.xpm");
+	game->sprites[3] = ft_new_sprite(game, "sprites/cesped_0.xpm");
+	game->sprites[4] = ft_new_sprite(game, "sprites/cesped_1.xpm");
+	game->sprites[5] = ft_new_sprite(game, "sprites/cesped_2.xpm");
+	game->sprites[6] = ft_new_sprite(game, "sprites/cesped_3.xpm");
+	game->sprites[7] = ft_new_sprite(game, "sprites/cesped_4.xpm");
+	game->sprites[8] = ft_new_sprite(game, "sprites/cesped_5.xpm");
+	game->sprites[9] = ft_new_sprite(game, "sprites/cesped_6.xpm");
+	game->sprites[10] = ft_new_sprite(game, "sprites/cesped_7.xpm");
+	game->sprites[11] = ft_new_sprite(game, "sprites/cesped_8.xpm");
+	game->sprites[12] = ft_new_sprite(game, "sprites/cesped_9.xpm");
+	ft_init_sprites_2(game);
 	i = 0;
 	while (i < 38)
 	{
 		if (!game->sprites[i])
 			ft_error_so_long(game, 9);
 		i++;
-	}	
+	}
 }
 
 void	ft_free_sprites(t_game *game)

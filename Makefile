@@ -6,7 +6,7 @@
 #    By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/19 16:55:30 by ide-dieg          #+#    #+#              #
-#    Updated: 2024/10/25 01:49:22 by ide-dieg         ###   ########.fr        #
+#    Updated: 2024/11/03 01:40:35 by ide-dieg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,13 +15,18 @@ NAME = so_long
 SRC = 	src/main.c \
 		src/ft_error_so_long.c \
 		src/fts_t_game.c \
+		src/fts_t_game_2.c \
 		src/fts_checkmap.c \
 		src/fts_checkmap2.c \
 		src/fts_t_map_fragment.c \
+		src/fts_t_map_fragment_2.c \
+		src/fts_t_map_fragment_3.c \
+		src/fts_t_map_fragment_4.c \
 		src/fts_window.c \
 		src/fts_sprites.c \
 		src/ft_draw_fragment.c \
 		src/fts_config_controls.c \
+		src/fts_config_controls_2.c \
 		src/fts_t_player.c \
 		src/fts_process_char_map.c \
 		src/ft_count_keys.c \

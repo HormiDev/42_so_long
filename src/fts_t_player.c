@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 22:00:33 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/10/30 22:04:05 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/11/02 20:44:16 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,29 +48,8 @@ t_player	*ft_player_config(t_game *game)
 	return (player);
 }
 
-void	ft_proces_player_tile(t_game *game, t_player *player)
+void	ft_proces_player_tile_2(t_game *game, t_player *player)
 {
-	player->tile = '0';
-	if (player->y > 0)
-	{
-		if (game->map_fragment->map[player->y - 1][player->x] == '.' ||
-			game->map_fragment->map[player->y - 1][player->x] == '/')
-			player->tile += 1;
-	}
-	else
-		if (game->map_fragment->up->map[game->map_fragment->y - 1][player->x] == '.' ||
-			game->map_fragment->up->map[game->map_fragment->y - 1][player->x] == '/')
-			player->tile += 1;
-	if (player->x < game->map_fragment->x - 1)
-	{
-		if (game->map_fragment->map[player->y][player->x + 1] == '.' ||
-			game->map_fragment->map[player->y][player->x + 1] == '/')
-			player->tile += 2;
-	}
-	else
-		if (game->map_fragment->right->map[player->y][0] == '.' ||
-			game->map_fragment->right->map[player->y][0] == '/')
-			player->tile += 2;
 	if (player->y < game->map_fragment->y - 1)
 	{
 		if (game->map_fragment->map[player->y + 1][player->x] == '.' ||
@@ -88,7 +67,37 @@ void	ft_proces_player_tile(t_game *game, t_player *player)
 			player->tile += 8;
 	}
 	else
-		if (game->map_fragment->left->map[player->y][game->map_fragment->x - 1] == '.' ||
-			game->map_fragment->left->map[player->y][game->map_fragment->x - 1] == '/')
+		if (game->map_fragment->left->map[player->y][game->map_fragment->x
+			- 1] == '.' ||
+			game->map_fragment->left->map[player->y][game->map_fragment->x
+			- 1] == '/')
 			player->tile += 8;
+}
+
+void	ft_proces_player_tile(t_game *game, t_player *player)
+{
+	player->tile = '0';
+	if (player->y > 0)
+	{
+		if (game->map_fragment->map[player->y - 1][player->x] == '.' ||
+			game->map_fragment->map[player->y - 1][player->x] == '/')
+			player->tile += 1;
+	}
+	else
+		if (game->map_fragment->up->map[game->map_fragment->y
+				- 1][player->x] == '.' ||
+				game->map_fragment->up->map[game->map_fragment->y
+				- 1][player->x] == '/')
+			player->tile += 1;
+	if (player->x < game->map_fragment->x - 1)
+	{
+		if (game->map_fragment->map[player->y][player->x + 1] == '.' ||
+			game->map_fragment->map[player->y][player->x + 1] == '/')
+			player->tile += 2;
+	}
+	else
+		if (game->map_fragment->right->map[player->y][0] == '.' ||
+			game->map_fragment->right->map[player->y][0] == '/')
+			player->tile += 2;
+	ft_proces_player_tile_2(game, player);
 }

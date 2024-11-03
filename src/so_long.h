@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 16:24:11 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/10/30 21:51:24 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/11/03 01:39:42 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,14 @@ t_map_fragment	*ft_map_fragment_add_up(t_map_fragment *map_fragment,
 t_map_fragment	*ft_map_fragment_add_down(t_map_fragment *map_fragment,
 					t_game *game);
 void			ft_map_fragment_necesary(t_game *game, int *x, int *y);
+void			ft_map_fragment_extend(t_game *game, int x, int y);
+void			ft_copy_map_to_fragment_line(t_game *game,
+					t_map_fragment *tmp_x, int cm_cf_x[3]);
+void			ft_copy_map_to_fragment(t_game *game, int x, int y);
+void			ft_map_fragment_fill_char(t_game *game, int c);
+t_map_fragment	*ft_map_fragment_search_player(t_game *game);
+void			ft_map_fragment_loading(t_game *game);
+void			ft_map_fragment_print(t_map_fragment *map_fragment);
 
 void			ft_window_size(t_game *game);
 void			ft_init_window(t_game *game);
@@ -127,9 +135,13 @@ void			ft_process_char_map(t_game *game);
 void			ft_count_keys(t_game *game);
 
 void			ft_move_up(t_game *game);
+void			ft_move_up_2(t_game *game);
 void			ft_move_down(t_game *game);
+void			ft_move_down_2(t_game *game);
 void			ft_move_left(t_game *game);
+void			ft_move_left_2(t_game *game);
 void			ft_move_right(t_game *game);
+void			ft_move_right_2(t_game *game);
 
 void			ft_print_start_history(t_game *game);
 void			ft_print_start_history_es(t_game *game);

@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 21:19:25 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/10/23 15:50:09 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/11/02 22:41:15 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_error_so_long(t_game *game, int error)
 	if (error == 1)
 		ft_printf("Memory allocation error.\n");
 	else if (error == 2)
-		ft_printf("Invalid arguments. Use [./so_long \"maps/map_name.ber\"].\n");
+		ft_printf("Invalid arguments. Use [./so_long maps/map_name.ber].\n");
 	else if (error == 3)
 		ft_printf("The map file does not exist or cannot be read.\n");
 	else if (error == 4)
@@ -38,4 +38,3 @@ void	ft_error_so_long(t_game *game, int error)
 	ft_printf("\e[39m\n");
 	exit(0);
 }
-	
