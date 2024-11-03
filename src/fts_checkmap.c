@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 02:14:18 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/10/29 23:47:40 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/11/03 19:30:18 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_map_is_rectangular(t_file *map)
 	tmp = map->list_content;
 	x = tmp->len;
 	if (x < 4)
-		return (0);
+		ft_error_so_long(0, 7);
 	while (tmp->next)
 	{
 		if (tmp->len != x)
@@ -113,16 +113,16 @@ int	ft_checkmap(t_file *map)
 	if (!map)
 		return (0);
 	if (map->lines < 3)
-		return (0);
+		ft_error_so_long(0, 6);
 	if (!ft_map_is_rectangular(map))
-		return (0);
+		ft_error_so_long(0, 11);
 	if (!ft_map_is_closed(map))
-		return (0);
+		ft_error_so_long(0, 12);
 	if (!ft_check_characters_map(map))
 		return (0);
 	if (!ft_check_epc_map(map))
-		return (0);
+		ft_error_so_long(0, 8);
 	if (!ft_check_map_roads_2(map))
-		return (0);
+		ft_error_so_long(0, 13);
 	return (1);
 }
