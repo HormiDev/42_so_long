@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 01:37:16 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/11/03 01:37:53 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/11/04 18:47:52 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,12 @@ void	ft_move_right_2(t_game *game)
 			ft_game_win(game);
 		else
 		{
-			ft_printf("You still need to collect %d keys\n", game->keys);
 			game->count_moves--;
 			ft_move_left(game);
 			return ;
 		}
 	}
-	ft_printf("Number of movements %d\n", ++game->count_moves);
+	game->count_moves++;
 	ft_draw_fragment(game);
 }
 

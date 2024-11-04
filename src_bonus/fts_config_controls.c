@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 00:25:28 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/11/03 01:37:46 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/11/04 18:48:57 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,12 @@ void	ft_move_up_2(t_game *game)
 			ft_game_win(game);
 		else
 		{
-			ft_printf("You still need to collect %d keys\n", game->keys);
 			game->count_moves--;
 			ft_move_down(game);
 			return ;
 		}
 	}
-	ft_printf("Number of movements %d\n", ++game->count_moves);
+	game->count_moves++;
 	ft_draw_fragment(game);
 }
 
@@ -75,13 +74,12 @@ void	ft_move_left_2(t_game *game)
 			ft_game_win(game);
 		else
 		{
-			ft_printf("You still need to collect %d keys\n", game->keys);
 			game->count_moves--;
 			ft_move_right(game);
 			return ;
 		}
 	}
-	ft_printf("Number of movements %d\n", ++game->count_moves);
+	game->count_moves++;
 	ft_draw_fragment(game);
 }
 
@@ -125,12 +123,11 @@ void	ft_move_down_2(t_game *game)
 			ft_game_win(game);
 		else
 		{
-			ft_printf("You still need to collect %d keys\n", game->keys);
 			game->count_moves--;
 			ft_move_up(game);
 			return ;
 		}
 	}
-	ft_printf("Number of movements %d\n", ++game->count_moves);
+	game->count_moves++;
 	ft_draw_fragment(game);
 }

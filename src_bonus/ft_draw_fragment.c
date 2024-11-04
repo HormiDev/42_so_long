@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 23:52:57 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/11/02 22:33:48 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/11/04 19:00:58 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ void	ft_select_tile(t_game *game, int x, int y)
 
 void	ft_draw_fragment(t_game *game)
 {
-	int	x;
-	int	y;
+	int		x;
+	int		y;
 
 	mlx_clear_window(game->mlx, game->win);
 	x = 0;
@@ -78,4 +78,5 @@ void	ft_draw_fragment(t_game *game)
 		}
 		x++;
 	}
+	ft_draw_text(game);
 }

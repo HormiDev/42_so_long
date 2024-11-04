@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 16:24:11 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/11/03 13:12:22 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/11/04 19:04:22 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,5 +147,7 @@ void			ft_print_start_history(t_game *game);
 void			ft_print_start_history_es(t_game *game);
 void			ft_print_victory_message(t_game *game);
 void			ft_print_victory_message_es(t_game *game);
+
+void			ft_draw_text(t_game *game);
 
 #endif

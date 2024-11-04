@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 19:40:40 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/11/03 18:35:50 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/11/04 18:26:37 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	ft_game_clear(t_game *game)
 void	ft_game_loading_2(t_game *game)
 {
 	ft_init_window(game);
+	mlx_set_font(game->mlx, game->win, "fixed");
 	ft_init_sprites(game);
 	game->player = ft_player_config(game);
 	ft_config_controls(game);
