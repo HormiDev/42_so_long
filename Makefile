@@ -6,7 +6,7 @@
 #    By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/19 16:55:30 by ide-dieg          #+#    #+#              #
-#    Updated: 2024/11/03 13:19:48 by ide-dieg         ###   ########.fr        #
+#    Updated: 2024/11/04 17:51:25 by ide-dieg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,26 @@ SRC = 	src/main.c \
 		src/ft_count_keys.c \
 		src/fts_history.c \
 
+SRC_BONUS = src_bonus/main.c \
+			src_bonus/ft_error_so_long.c \
+			src_bonus/fts_t_game.c \
+			src_bonus/fts_t_game_2.c \
+			src_bonus/fts_checkmap.c \
+			src_bonus/fts_checkmap2.c \
+			src_bonus/fts_t_map_fragment.c \
+			src_bonus/fts_t_map_fragment_2.c \
+			src_bonus/fts_t_map_fragment_3.c \
+			src_bonus/fts_t_map_fragment_4.c \
+			src_bonus/fts_window.c \
+			src_bonus/fts_sprites.c \
+			src_bonus/ft_draw_fragment.c \
+			src_bonus/fts_config_controls.c \
+			src_bonus/fts_config_controls_2.c \
+			src_bonus/fts_t_player.c \
+			src_bonus/fts_process_char_map.c \
+			src_bonus/ft_count_keys.c \
+			src_bonus/fts_history.c \
+
 CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
@@ -46,6 +66,13 @@ build: ide-dieg so_long_title build_minilibx-linux build_libft
 	@if [ ! -f $(NAME) ]; then \
 		echo "Building $(NAME)..."; \
 		$(CC) $(CFLAGS) -o $(NAME) $(SRC) $(LIBSA) $(LFLAGS); \
+		echo "$(NAME) built!"; \
+	fi
+
+build_bonus: ide-dieg so_long_title build_minilibx-linux build_libft
+	@if [ ! -f $(NAME) ]; then \
+		echo "Building $(NAME)..."; \
+		$(CC) $(CFLAGS) -o $(NAME) $(SRC_BONUS) $(LIBSA) $(LFLAGS); \
 		echo "$(NAME) built!"; \
 	fi
 
@@ -65,12 +92,23 @@ build_windows_max_size: ide-dieg so_long_title build_minilibx-linux build_libft
 		echo "$(NAME) built!"; \
 	fi
 
+build_bonus_windows_max_size: ide-dieg so_long_title build_minilibx-linux build_libft
+	@if [ ! -f $(NAME) ]; then \
+		echo "Building $(NAME)..."; \
+		read -p "Enter MAX_WIN_WIDTH: " WIDTH; \
+		read -p "Enter MAX_WIN_HEIGHT: " HEIGHT; \
+		$(CC) $(CFLAGS) -D MAX_WIN_WIDTH=$$WIDTH -D MAX_WIN_HEIGHT=$$HEIGHT -o $(NAME) $(SRC_BONUS) $(LIBSA) $(LFLAGS); \
+		echo "$(NAME) built!"; \
+	fi
+
 fclean: fclean_minilibx-linux fclean_libft
 	@echo "Cleaning $(NAME)..."
 	@rm -f $(NAME)
 	@echo "$(NAME) cleaned!"
 
 re: fclean build
+
+re_bonus: fclean build_bonus
 
 build_minilibx-linux:
 	@if [ ! -f minilibx-linux/libmlx.a ]; then \
@@ -87,7 +125,7 @@ fclean_minilibx-linux:
 build_libft:
 	@if [ ! -f 42_Libft/libft.a ]; then \
 		echo "Compiling Libft..."; \
-		make additional -C 42_Libft > /dev/null 2>&1; \
+		make all -C 42_Libft > /dev/null 2>&1; \
 		echo "Libft compiled!"; \
 	fi
 
