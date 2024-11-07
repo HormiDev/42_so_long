@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 16:24:11 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/11/07 01:35:12 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/11/07 17:21:15 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,8 @@ typedef struct s_game
 	t_player		*player;
 	int				count_moves;
 	int				keys;
-	long			time;
+	long			time_flowers;
+	long			time_last_frame;
 }	t_game;
 
 void			ft_error_so_long(t_game *game, int error);

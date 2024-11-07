@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 01:37:16 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/11/04 18:47:52 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/11/07 16:37:25 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ void	ft_move_right_2(t_game *game)
 		}
 	}
 	game->count_moves++;
-	ft_draw_fragment(game);
 }
 
 void	ft_move_right(t_game *game)
