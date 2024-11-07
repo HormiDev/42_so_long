@@ -6,14 +6,14 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 16:24:11 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/11/04 19:04:22 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/11/07 01:35:12 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include <errno.h>
+# include <time.h>
 # include "../minilibx-linux/mlx.h"
 # include "../minilibx-linux/mlx_int.h"
 # include "../42_Libft/libft.h"
@@ -71,6 +71,7 @@ typedef struct s_game
 	t_player		*player;
 	int				count_moves;
 	int				keys;
+	long			time;
 }	t_game;
 
 void			ft_error_so_long(t_game *game, int error);
@@ -149,5 +150,6 @@ void			ft_print_victory_message(t_game *game);
 void			ft_print_victory_message_es(t_game *game);
 
 void			ft_draw_text(t_game *game);
+int				ft_animations_loop(t_game *game);
 
 #endif

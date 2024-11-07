@@ -6,7 +6,7 @@
 #    By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/19 16:55:30 by ide-dieg          #+#    #+#              #
-#    Updated: 2024/11/04 22:32:01 by ide-dieg         ###   ########.fr        #
+#    Updated: 2024/11/05 21:29:59 by ide-dieg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,6 +52,7 @@ SRC_BONUS = src_bonus/main.c \
 			src_bonus/fts_process_char_map.c \
 			src_bonus/ft_count_keys.c \
 			src_bonus/fts_history.c \
+			src_bonus/ft_animations_loop.c \
 
 CC = cc
 
