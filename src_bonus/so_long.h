@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 16:24:11 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/11/07 17:21:15 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/11/16 18:23:11 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,11 @@ typedef struct s_player
 {
 	int		x;
 	int		y;
+	int		xy_position[2];
+	int		xy_destination[2];
 	int		n_sprite;
 	char	tile;
+	int		in_movement;
 }	t_player;
 
 typedef struct s_map_fragment
@@ -67,7 +70,7 @@ typedef struct s_game
 	int				win_width;
 	int				win_height;
 	void			*win;
-	void			*sprites[38];
+	void			*sprites[39];
 	t_player		*player;
 	int				count_moves;
 	int				keys;

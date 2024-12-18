@@ -6,13 +6,13 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 21:27:29 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/11/07 17:25:00 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/11/14 20:48:57 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void   ft_animate_flowers(t_game *game)
+void	ft_animate_flowers(t_game *game)
 {
 	int	x;
 	int	y;

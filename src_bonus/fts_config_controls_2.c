@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 01:37:16 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/11/07 16:37:25 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/11/14 21:18:55 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_move_down(t_game *game)
 		|| game->player->tile == '0' + 6 || game->player->tile == '0' + 14
 		|| game->player->tile == '0' + 5 || game->player->tile == '0' + 13
 		|| game->player->tile == '0' + 7)
-		return (ft_draw_fragment(game));
+		return ;
 	game->map_fragment->map[game->player->y][game->player->x]
 		= game->player->tile;
 	if (game->player->y + 1 >= game->map_fragment->y)
@@ -67,7 +67,7 @@ void	ft_move_right(t_game *game)
 		|| game->player->tile == '0' + 6 || game->player->tile == '0' + 7
 		|| game->player->tile == '0' + 10 || game->player->tile == '0' + 14
 		|| game->player->tile == '0' + 11)
-		return (ft_draw_fragment(game));
+		return ;
 	game->map_fragment->map[game->player->y][game->player->x]
 		= game->player->tile;
 	if (game->player->x + 1 >= game->map_fragment->x)
@@ -91,13 +91,17 @@ int	ft_key_press(int keycode, t_game *game)
 {
 	if (keycode == 65307)
 		ft_game_close(game);
-	else if (keycode == 'w' || keycode == 'W' || keycode == 65362)
+	else if ((keycode == 'w' || keycode == 'W' || keycode == 65362)
+		&& game->player->in_movement == 0)
 		ft_move_up(game);
-	else if (keycode == 'a' || keycode == 'A' || keycode == 65361)
+	else if ((keycode == 'a' || keycode == 'A' || keycode == 65361)
+		&& game->player->in_movement == 0)
 		ft_move_left(game);
-	else if (keycode == 's' || keycode == 'S' || keycode == 65364)
+	else if ((keycode == 's' || keycode == 'S' || keycode == 65364)
+		&& game->player->in_movement == 0)
 		ft_move_down(game);
-	else if (keycode == 'd' || keycode == 'D' || keycode == 65363)
+	else if ((keycode == 'd' || keycode == 'D' || keycode == 65363)
+		&& game->player->in_movement == 0)
 		ft_move_right(game);
 	return (0);
 }

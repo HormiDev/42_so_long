@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 00:25:28 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/11/07 16:37:19 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/11/16 18:06:26 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	ft_move_up(t_game *game)
 		|| game->player->tile == '0' + 9 || game->player->tile == '0' + 11
 		|| game->player->tile == '0' + 5 || game->player->tile == '0' + 13
 		|| game->player->tile == '0' + 7)
-		return (ft_draw_fragment(game));
+		return ;
 	game->map_fragment->map[game->player->y][game->player->x]
 		= game->player->tile;
 	if (game->player->y - 1 < 0)
@@ -88,7 +88,7 @@ void	ft_move_left(t_game *game)
 		|| game->player->tile == '0' + 13 || game->player->tile == '0' + 12
 		|| game->player->tile == '0' + 10 || game->player->tile == '0' + 14
 		|| game->player->tile == '0' + 11)
-		return (ft_draw_fragment(game));
+		return ;
 	game->map_fragment->map[game->player->y][game->player->x]
 		= game->player->tile;
 	if (game->player->x - 1 < 0)

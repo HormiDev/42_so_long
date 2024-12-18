@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 22:00:33 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/11/02 20:44:16 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/11/14 21:59:17 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,10 @@ void	ft_localize_player(t_game *game, t_player *player)
 			{
 				player->x = x;
 				player->y = y;
+				player->xy_position[0] = x * TILE_SIZE;
+				player->xy_position[1] = y * TILE_SIZE;
+				player->xy_destination[0] = x * TILE_SIZE;
+				player->xy_destination[1] = y * TILE_SIZE;
 				return ;
 			}
 			y++;
@@ -39,7 +43,7 @@ t_player	*ft_player_config(t_game *game)
 {
 	t_player	*player;
 
-	player = (t_player *)malloc(sizeof(t_player));
+	player = (t_player *)calloc(1, sizeof(t_player));
 	if (!player)
 		ft_error_so_long(game, 1);
 	player->n_sprite = 36;
