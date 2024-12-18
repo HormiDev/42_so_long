@@ -6,11 +6,19 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 21:27:29 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/11/14 20:48:57 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/12/18 18:40:11 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	ft_iter_squeleton(t_game *game, int x, int y)
+{
+	if (game->map_fragment->map[y][x] < 91)
+		game->map_fragment->map[y][x]++;
+	else
+		game->map_fragment->map[y][x] = 88;
+}
 
 void	ft_animate_flowers(t_game *game)
 {
@@ -30,6 +38,9 @@ void	ft_animate_flowers(t_game *game)
 				if ((game->map_fragment->map[y][x] - 64) % 4 == 0)
 					game->map_fragment->map[y][x] -= 4;
 			}
+			if (game->map_fragment->map[y][x] >= 88
+				&& game->map_fragment->map[y][x] <= 91)
+				ft_iter_squeleton(game, x, y);
 			y++;
 		}
 		x++;

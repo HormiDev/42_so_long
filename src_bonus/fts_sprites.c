@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 20:50:04 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/11/02 23:43:47 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/12/18 18:46:21 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,27 @@ void	*ft_new_sprite(t_game *game, char *path)
 	return (sprite);
 }
 
+void	ft_init_sprites_3(t_game *game)
+{
+	game->sprites[37] = ft_new_sprite(game, "sprites/jugador_izquierda_0.xpm");
+	game->sprites[38] = ft_new_sprite(game, "sprites/sprite_null.xpm");
+	game->sprites[39] = ft_new_sprite(game, "sprites/sprite_null.xpm");
+	game->sprites[40] = ft_new_sprite(game, "sprites/sprite_null.xpm");
+	game->sprites[41] = ft_new_sprite(game, "sprites/sprite_null.xpm");
+	game->sprites[42] = ft_new_sprite(game, "sprites/sprite_null.xpm");
+	game->sprites[43] = ft_new_sprite(game, "sprites/sprite_null.xpm");
+	game->sprites[44] = ft_new_sprite(game, "sprites/sprite_null.xpm");
+	game->sprites[45] = ft_new_sprite(game, "sprites/sprite_null.xpm");
+	game->sprites[46] = ft_new_sprite(game, "sprites/sprite_null.xpm");
+	game->sprites[47] = ft_new_sprite(game, "sprites/sprite_null.xpm");
+	game->sprites[48] = ft_new_sprite(game, "sprites/sprite_null.xpm");
+	game->sprites[49] = ft_new_sprite(game, "sprites/sprite_null.xpm");
+	game->sprites[50] = ft_new_sprite(game, "sprites/esqueleto_0.xpm");
+	game->sprites[51] = ft_new_sprite(game, "sprites/esqueleto_1.xpm");
+	game->sprites[52] = ft_new_sprite(game, "sprites/esqueleto_2.xpm");
+	game->sprites[53] = ft_new_sprite(game, "sprites/esqueleto_3.xpm");
+}
+
 void	ft_init_sprites_2(t_game *game)
 {
 	game->sprites[13] = ft_new_sprite(game, "sprites/cesped_10.xpm");
@@ -65,7 +86,7 @@ void	ft_init_sprites_2(t_game *game)
 	game->sprites[34] = ft_new_sprite(game, "sprites/jugador_arriba_0.xpm");
 	game->sprites[35] = ft_new_sprite(game, "sprites/jugador_derecha_0.xpm");
 	game->sprites[36] = ft_new_sprite(game, "sprites/jugador_abajo_0.xpm");
-	game->sprites[37] = ft_new_sprite(game, "sprites/jugador_izquierda_0.xpm");
+	ft_init_sprites_3(game);
 }
 
 void	ft_init_sprites(t_game *game)
@@ -87,7 +108,7 @@ void	ft_init_sprites(t_game *game)
 	game->sprites[12] = ft_new_sprite(game, "sprites/cesped_9.xpm");
 	ft_init_sprites_2(game);
 	i = 0;
-	while (i < 38)
+	while (i < 54)
 	{
 		if (!game->sprites[i])
 			ft_error_so_long(game, 9);
@@ -100,7 +121,7 @@ void	ft_free_sprites(t_game *game)
 	int	i;
 
 	i = 0;
-	while (i < 38)
+	while (i < 54)
 	{
 		if (game->sprites[i])
 			mlx_destroy_image(game->mlx, game->sprites[i]);

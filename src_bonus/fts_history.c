@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 23:09:15 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/10/24 18:22:38 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/12/18 19:36:15 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,4 +90,20 @@ void	ft_print_victory_message(t_game *game)
 	ft_printf("Thank you for playing, explorer. Until next time!\n");
 	ft_printf("\n\n\033[0m");
 	ft_print_victory_message_es(game);
+}
+
+void	ft_print_dead_message(void)
+{
+	ft_printf("\033[0m");
+	ft_printf("-----------------------------en----------------------------\n");
+	ft_printf("\n\033[0;33m");
+	ft_printf("Oh noooo! The skeleton has impaled you with a spear.\n");
+	ft_printf("Darkness embraces you. Until next time, brave adventurer.");
+	ft_printf("\033[0m");
+	ft_printf("\n\n");
+	ft_printf("-----------------------------es----------------------------\n");
+	ft_printf("\n\033[0;33m");
+	ft_printf("¡Oh noooo! El esqueleto te ha reventado de un lanzazo.\n");
+	ft_printf("La oscuridad te recibe. Hasta la próxima, valiente aventurer@.");
+	ft_printf("\n\033[0m");
 }

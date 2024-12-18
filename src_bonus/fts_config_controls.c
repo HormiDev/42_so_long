@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 00:25:28 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/11/16 18:06:26 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/12/18 19:13:04 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	ft_move_up_2(t_game *game)
 			return ;
 		}
 	}
+	if (game->player->tile == 'X')
+		ft_player_dead(game);
 	game->count_moves++;
 }
 
@@ -78,6 +80,8 @@ void	ft_move_left_2(t_game *game)
 			return ;
 		}
 	}
+	if (game->player->tile == 'X')
+		ft_player_dead(game);
 	game->count_moves++;
 }
 
@@ -126,5 +130,7 @@ void	ft_move_down_2(t_game *game)
 			return ;
 		}
 	}
+	if (game->player->tile == 'X')
+		ft_player_dead(game);
 	game->count_moves++;
 }

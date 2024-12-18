@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 02:14:44 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/11/02 22:39:19 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/12/18 17:48:39 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	ft_check_characters_map(t_file *map)
 		{
 			if (map_array[i][j] != '0' && map_array[i][j] != '1'
 				&& map_array[i][j] != 'C' && map_array[i][j] != 'E'
-				&& map_array[i][j] != 'P')
+				&& map_array[i][j] != 'P' && map_array[i][j] != 'X')
 				return (0);
 			j++;
 		}

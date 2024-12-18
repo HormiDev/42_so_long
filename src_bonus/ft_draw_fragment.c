@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 23:52:57 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/11/04 19:00:58 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/12/18 18:32:34 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ void	ft_draw_player(t_game *game, int x, int y)
 
 void	ft_select_tile(t_game *game, int x, int y)
 {
-	if (game->map_fragment->map[y][x] >= 46
-		&& game->map_fragment->map[y][x] <= 76)
+	if ((game->map_fragment->map[y][x] >= 46
+		&& game->map_fragment->map[y][x] <= 76))
 		ft_draw_tile(game, x * TILE_SIZE, y * TILE_SIZE,
 			game->map_fragment->map[y][x] - 45);
 	else if (game->map_fragment->map[y][x] == '/')
@@ -57,6 +57,10 @@ void	ft_select_tile(t_game *game, int x, int y)
 		ft_draw_tile(game, x * TILE_SIZE, y * TILE_SIZE, 31);
 	else if (game->map_fragment->map[y][x] == 'e' && game->keys <= 0)
 		ft_draw_tile(game, x * TILE_SIZE, y * TILE_SIZE, 32);
+	else if (game->map_fragment->map[y][x] >= 'X'
+		&& game->map_fragment->map[y][x] <= 'X' + 4)
+		ft_draw_tile(game, x * TILE_SIZE, y * TILE_SIZE,
+			game->map_fragment->map[y][x] - 'X' + 50);
 	else
 		ft_draw_tile(game, x * TILE_SIZE, y * TILE_SIZE, 0);
 }
