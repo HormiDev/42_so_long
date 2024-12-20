@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 16:24:11 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/11/03 13:12:22 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/12/20 03:09:13 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ t_game			*ft_game_loading(int fd);
 int				ft_game_close(void *param);
 void			ft_game_win(t_game *game);
 
-int				ft_checkmap(t_file *map);
+int				ft_checkmap(t_game *game);
 int				ft_map_is_rectangular(t_file *map);
 int				ft_map_is_closed(t_file *map);
 int				ft_check_characters_map(t_file *map);

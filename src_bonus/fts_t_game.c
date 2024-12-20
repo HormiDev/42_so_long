@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 19:40:40 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/11/04 18:26:37 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/12/20 03:17:27 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ t_game	*ft_game_loading(int fd)
 	}
 	game->map = ft_create_file_from_fd(fd);
 	close(fd);
-	if (!ft_checkmap(game->map))
+	if (!ft_checkmap(game))
 		ft_error_so_long(game, 10);
 	ft_count_keys(game);
 	ft_process_char_map(game);

@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 02:14:18 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/11/03 19:30:18 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/12/20 03:15:24 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,21 +108,21 @@ int	ft_check_epc_map(t_file *map)
 	return (1);
 }
 
-int	ft_checkmap(t_file *map)
+int	ft_checkmap(t_game *game)
 {
-	if (!map)
+	if (!game->map)
 		return (0);
-	if (map->lines < 3)
-		ft_error_so_long(0, 6);
-	if (!ft_map_is_rectangular(map))
-		ft_error_so_long(0, 11);
-	if (!ft_map_is_closed(map))
-		ft_error_so_long(0, 12);
-	if (!ft_check_characters_map(map))
+	if (game->map->lines < 3)
+		ft_error_so_long(game, 6);
+	if (!ft_map_is_rectangular(game->map))
+		ft_error_so_long(game, 11);
+	if (!ft_map_is_closed(game->map))
+		ft_error_so_long(game, 12);
+	if (!ft_check_characters_map(game->map))
 		return (0);
-	if (!ft_check_epc_map(map))
-		ft_error_so_long(0, 8);
-	if (!ft_check_map_roads_2(map))
-		ft_error_so_long(0, 13);
+	if (!ft_check_epc_map(game->map))
+		ft_error_so_long(game, 8);
+	if (!ft_check_map_roads_2(game->map))
+		ft_error_so_long(game, 13);
 	return (1);
 }
