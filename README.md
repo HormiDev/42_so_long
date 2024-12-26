@@ -13,11 +13,11 @@ El programa es capaz de cargar cualquier mapa con extensión .ber que cumpla con
 - Ser resoluble, es decir, debe existir un camino desde el jugador hasta el cofre y las llaves.
 - Contener solo los siguientes caracteres:
 ```
- 1 para los muros.			1111111111111111
- 0 para los caminos.		1P0E1C0000000001
- P para el jugador.			1000100000100001
- E para el cofre.			10000000001000C1
- C para las llaves.			1111111111111111
+ 1 para los muros.
+ 0 para los caminos.
+ P para el jugador.
+ E para el cofre.
+ C para las llaves.
 ```
 ```sh
 ./so_long maps/hormimap.ber
