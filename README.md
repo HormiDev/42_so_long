@@ -22,7 +22,7 @@ El programa es capaz de cargar cualquier mapa con extensión .ber que cumpla con
 ```sh
 ./so_long maps/hormimap.ber
 ```
-<video src="img/so_long.mp4" loop autoplay muted></video>
+![so_long gameplay](img/so_long.gif)
 
 ## Bonus:
 Para el bonus del proyecto, he agregado las siguientes mejoras:
@@ -33,7 +33,7 @@ Para el bonus del proyecto, he agregado las siguientes mejoras:
 ```sh
 ./so_long maps/hormimap.ber
 ```
-<video src="img/so_long_bonus.mp4" loop autoplay muted></video>
+![so_long gameplay](img/so_long_bonus.gif)
 
 Me habría gustado añadir animación de desplazamiento y caminar al jugador, así como una transición al cambiar de fragmento del mapa.
 
@@ -42,7 +42,7 @@ Ha sido un proyecto muy entretenido, me apasiona el desarrollo de videojuegos. M
 Espero que te juste el proyecto y si te atreves a jugarlo ¡Mi récord está en `581` para el mapa `bigmap_bonus.ber` ¿Puedes superarlo?😊
 
 ```sh
-git clone https://github.com/HormiDev/42_so_long.git
+![so_long gameplay](img/so_long_bons.gif)
 ```
 
 ## Personalización del Tamaño de la Ventana:
