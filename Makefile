@@ -6,11 +6,13 @@
 #    By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/19 16:55:30 by ide-dieg          #+#    #+#              #
-#    Updated: 2024/11/05 21:29:59 by ide-dieg         ###   ########.fr        #
+#    Updated: 2024/12/26 18:01:04 by ide-dieg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
+
+NAME_BONUS = so_long_bonus
 
 SRC = 	src/main.c \
 		src/ft_error_so_long.c \
@@ -72,12 +74,12 @@ build: ide-dieg so_long_title update_submodules build_minilibx-linux build_libft
 		echo "$(VERDE)$(NAME) built!$(NC)"; \
 	fi
 
-build_bonus: ide-dieg so_long_title update_submodules build_minilibx-linux build_libft
-	@if [ ! -f $(NAME) ]; then \
-		echo "$(NARANJA)Building $(NAME)...$(NC)"; \
-		$(CC) $(CFLAGS) -o $(NAME) $(SRC_BONUS) $(LIBSA) $(LFLAGS); \
+bonus: ide-dieg so_long_title update_submodules build_minilibx-linux build_libft
+	@if [ ! -f $(NAME_BONUS) ]; then \
+		echo "$(NARANJA)Building $(NAME_BONUS)...$(NC)"; \
+		$(CC) $(CFLAGS) -o $(NAME_BONUS) $(SRC_BONUS) $(LIBSA) $(LFLAGS); \
 		tput cuu1 && tput el; \
-		echo "$(VERDE)$(NAME) built!$(NC)"; \
+		echo "$(VERDE)$(NAME_BONUS) built!$(NC)"; \
 	fi
 
 build_windows_max_size: ide-dieg so_long_title update_submodules build_minilibx-linux build_libft
@@ -103,6 +105,7 @@ build_bonus_windows_max_size: ide-dieg so_long_title update_submodules build_min
 fclean: fclean_minilibx-linux fclean_libft
 	@echo "Cleaning $(NAME)..."
 	@rm -f $(NAME)
+	@rm -f $(NAME_BONUS)
 	@echo "$(NAME) cleaned!"
 
 re: fclean build
@@ -140,6 +143,8 @@ update_submodules:
 	@git submodule update --init --recursive > /dev/null 2>&1
 	@tput cuu1 && tput el
 	@echo "$(VERDE)Submodules updated!$(NC)" 
+
+clean: fclean_libft fclean_minilibx-linux
 
 ROJO = \033[0;31m
 NC = \033[0m
